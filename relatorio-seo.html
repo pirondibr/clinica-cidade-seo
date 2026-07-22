@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório SEO — Clínica Cidade</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1e293b; --panel2:#243449; --line:#334155;
+    --txt:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --accent2:#6366f1;
+    --green:#22c55e; --lime:#84cc16; --amber:#f59e0b; --rose:#f43f5e; --slate:#64748b;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#0b1220,#0f172a 40%,#111c33);color:var(--txt);min-height:100vh}
+  header{padding:28px 32px 18px;border-bottom:1px solid var(--line);background:rgba(15,23,42,.6);backdrop-filter:blur(6px);position:sticky;top:0;z-index:20}
+  h1{margin:0;font-size:22px;letter-spacing:.3px;display:flex;align-items:center;gap:10px}
+  h1 .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+  .sub{color:var(--muted);font-size:13px;margin-top:6px}
+  .wrap{padding:24px 32px 60px;max-width:1280px;margin:0 auto}
+
+  /* Tabs */
+  .tabs{display:flex;gap:6px;margin:22px 0 6px;border-bottom:1px solid var(--line)}
+  .tab{padding:10px 18px;cursor:pointer;color:var(--muted);font-weight:600;font-size:14px;border-bottom:2px solid transparent;transition:.15s}
+  .tab:hover{color:var(--txt)}
+  .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* Toolbar */
+  .toolbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:20px 0}
+  .toolbar label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.6px}
+  select,input[type=search]{background:var(--panel);border:1px solid var(--line);color:var(--txt);padding:9px 12px;border-radius:9px;font-size:14px;outline:none}
+  select:focus,input:focus{border-color:var(--accent)}
+  .btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:9px 14px;border-radius:9px;font-size:13px;cursor:pointer;font-weight:600}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .grow{flex:1}
+
+  /* Cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:8px 0 24px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .card .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+  .card .v{font-size:28px;font-weight:700;margin-top:6px}
+  .card .s{font-size:12px;color:var(--muted);margin-top:2px}
+  .card::after{content:"";position:absolute;right:-20px;top:-20px;width:80px;height:80px;border-radius:50%;opacity:.12}
+  .card.c1::after{background:var(--green)} .card.c5::after{background:var(--lime)}
+  .card.c10::after{background:var(--amber)} .card.c20::after{background:var(--accent)}
+  .card.tot::after{background:var(--accent2)} .card.vol::after{background:var(--rose)}
+
+  /* Buckets */
+  .buckets{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:26px}
+  .bucket{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .bucket h3{margin:0;padding:13px 16px;font-size:14px;display:flex;justify-content:space-between;align-items:center;color:#0b1220}
+  .bucket.b1 h3{background:linear-gradient(90deg,var(--green),#16a34a)}
+  .bucket.b5 h3{background:linear-gradient(90deg,var(--lime),#65a30d)}
+  .bucket.b10 h3{background:linear-gradient(90deg,var(--amber),#d97706)}
+  .bucket.b20 h3{background:linear-gradient(90deg,var(--accent),#0284c7)}
+  .bucket h3 .cnt{background:rgba(0,0,0,.25);color:#fff;border-radius:20px;padding:2px 10px;font-size:12px}
+  .bucket ul{list-style:none;margin:0;padding:8px;max-height:230px;overflow:auto}
+  .bucket li{display:flex;justify-content:space-between;gap:8px;padding:7px 10px;border-radius:8px;font-size:13px}
+  .bucket li:nth-child(odd){background:var(--panel2)}
+  .bucket li .pos{color:var(--muted);font-variant-numeric:tabular-nums}
+  .empty{color:var(--muted);font-size:13px;padding:18px;text-align:center;font-style:italic}
+
+  /* Table */
+  .tablewrap{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:var(--panel2);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;user-select:none;position:sticky;top:0}
+  th:hover{color:var(--txt)}
+  tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:rgba(56,189,248,.06)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;min-width:34px;text-align:center}
+  .p1{background:rgba(34,197,94,.18);color:#4ade80}
+  .p5{background:rgba(132,204,22,.18);color:#a3e635}
+  .p10{background:rgba(245,158,11,.18);color:#fbbf24}
+  .p20{background:rgba(56,189,248,.18);color:#7dd3fc}
+  .p0{background:rgba(100,116,139,.2);color:#94a3b8}
+  .posinput{width:64px;background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:7px;padding:5px 8px;text-align:center;font-variant-numeric:tabular-nums}
+  .posinput:focus{border-color:var(--accent);outline:none}
+  .city-tag{font-size:11px;color:var(--muted)}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:30px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:6px 0 18px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .future-link{text-decoration:none;background:linear-gradient(90deg,var(--accent2),var(--accent));color:#fff;font-weight:700;font-size:13px;padding:11px 18px;border-radius:10px;box-shadow:0 6px 18px rgba(99,102,241,.4);white-space:nowrap;transition:.15s}
+  .future-link:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(99,102,241,.55)}
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+    <div>
+      <h1><span class="dot"></span> Relatório de SEO — Clínica Cidade</h1>
+      <div class="sub">Monitoramento de posicionamento orgânico por palavra-chave e cidade &middot; posições iniciais em <b>0</b> (fora do ranking)</div>
+    </div>
+    <a class="future-link" href="relatorio-seo-projecao.html">🔮 Exemplo futuro (projeção) →</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tabs">
+    <div class="tab active" data-tab="geral">Visão Geral</div>
+    <div class="tab" data-tab="tabela">Palavras-chave</div>
+  </div>
+
+  <!-- ===================== TAB GERAL ===================== -->
+  <section id="tab-geral">
+    <div class="toolbar">
+      <div>
+        <label>Cidade</label>
+        <select id="cityFilter"></select>
+      </div>
+      <div class="grow"></div>
+      <button class="btn" id="resetBtn" title="Zerar todas as posições">↺ Zerar posições</button>
+    </div>
+
+    <div class="cards">
+      <div class="card tot"><div class="k">Palavras-chave</div><div class="v" id="cKw">0</div><div class="s">no filtro atual</div></div>
+      <div class="card vol"><div class="k">Volume total</div><div class="v" id="cVol">0</div><div class="s">buscas/mês</div></div>
+      <div class="card c1"><div class="k">Top 1</div><div class="v" id="cT1">0</div><div class="s">posição 1</div></div>
+      <div class="card c5"><div class="k">Top 5</div><div class="v" id="cT5">0</div><div class="s">posições 1–5</div></div>
+      <div class="card c10"><div class="k">Top 10</div><div class="v" id="cT10">0</div><div class="s">posições 1–10</div></div>
+      <div class="card c20"><div class="k">Top 20</div><div class="v" id="cT20">0</div><div class="s">posições 1–20</div></div>
+    </div>
+
+    <div class="buckets">
+      <div class="bucket b1"><h3>🥇 Top 1 <span class="cnt" id="n1">0</span></h3><ul id="list1"></ul></div>
+      <div class="bucket b5"><h3>🏅 Top 5 <span class="cnt" id="n5">0</span></h3><ul id="list5"></ul></div>
+      <div class="bucket b10"><h3>🎯 Top 10 <span class="cnt" id="n10">0</span></h3><ul id="list10"></ul></div>
+      <div class="bucket b20"><h3>📈 Top 20 <span class="cnt" id="n20">0</span></h3><ul id="list20"></ul></div>
+    </div>
+  </section>
+
+  <!-- ===================== TAB TABELA ===================== -->
+  <section id="tab-tabela" style="display:none">
+    <div class="toolbar">
+      <div>
+        <label>Cidade</label>
+        <select id="cityFilter2"></select>
+      </div>
+      <div class="grow">
+        <label>Buscar palavra-chave</label>
+        <input type="search" id="search" placeholder="Digite para filtrar..." style="width:100%">
+      </div>
+    </div>
+    <div class="legend">
+      <span><i style="background:#22c55e"></i> Top 1</span>
+      <span><i style="background:#84cc16"></i> Top 5</span>
+      <span><i style="background:#f59e0b"></i> Top 10</span>
+      <span><i style="background:#38bdf8"></i> Top 20</span>
+      <span><i style="background:#64748b"></i> Fora do ranking (0)</span>
+      <span style="margin-left:auto">✏️ Edite a coluna <b>Posição</b> — os blocos e cartões atualizam automaticamente</span>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-sort="kw">Palavra-chave</th>
+            <th data-sort="city">Cidade</th>
+            <th data-sort="vol" class="num">Volume</th>
+            <th data-sort="pos" class="num">Posição</th>
+            <th data-sort="pos">Faixa</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>Gerado automaticamente &middot; as posições editadas ficam salvas neste navegador (localStorage).</footer>
+</div>
+
+<script>
+/* ---------- Dados ---------- */
+const RAW = [
+  ["centro medico indaiatuba",880],["oftalmologista indaiatuba",720],
+  ["endocrinologista indaiatuba",590],["ultrassom indaiatuba",590],
+  ["cardiologista indaiatuba",390],["dermatologista indaiatuba",320],
+  ["psiquiatra indaiatuba",320],["exame toxicológico indaiatuba",50],
+  ["urologista indaiatuba",320],["clinica popular indaiatuba",30],
+  ["clinica medica em indaiatuba",70],["clinica oftalmologica indaiatuba",90],
+  ["melhor endocrinologista indaiatuba",90],["neurologista indaiatuba",320],
+  ["ortopedistas indaiatuba",320],["pneumologista indaiatuba",170],
+  ["gastroenterologista indaiatuba",140],["acupuntura indaiatuba",110],
+  ["nutrologo indaiatuba",110],["pediatras em indaiatuba",110],
+  ["nefrologista indaiatuba",90],["raio x indaiatuba",90],
+  ["mastologista indaiatuba",50],["alergologista indaiatuba",40],
+  ["clínico geral indaiatuba",40],["geriatra indaiatuba",40],
+  ["infectologista indaiatuba",40],["hepatologista em indaiatuba",30],
+  ["melhor oftalmologista em indaiatuba",30],
+  // ---- Campinas ----
+  ["clinica popular campinas",720],["centro medico campinas",4400],
+  ["oftalmologista campinas",1600],["ultrassom campinas",1600],
+  ["cardiologista campinas",720],["exame toxicológico campinas",170],
+  ["psiquiatra campinas",1600],["dermatologista campinas",1600],
+  ["urologista campinas",720],["endocrinologista campinas",1000],
+  ["clinica de ultrassom em campinas",320],["clinica cardiologica campinas",170],
+  ["clinica oftalmologica campinas",320],["neurologista campinas",480],
+  ["alergologista campinas",320],["fonoaudiologia campinas",320],
+  ["nutrologo campinas",320],["acupuntura campinas",260],
+  ["mastologia campinas",260],["raio x campinas",260],
+  ["clinica medica em campinas",210],["proctologista campinas",170],
+  ["melhores endocrinologistas de campinas",140],["geriatra campinas",110],
+  ["melhor neurologista campinas",110],["melhor urologista de campinas",110],
+  ["clínica de endoscopia campinas",90],["clinica de oftalmologia campinas",90],
+  ["clinicas psiquiatricas em campinas",90],["colonoscopia em campinas",90],
+  ["homeopatia campinas",90],["infectologista campinas",90],
+  ["melhor oftalmologista de campinas",90],["melhor ortopedista de campinas",90],
+  ["melhor pneumologista de campinas",90],["melhor psiquiatra em campinas",90]
+];
+
+const STORAGE_KEY = "seo_clinica_cidade_v1";
+
+/* Detecta a cidade a partir do termo (última palavra reconhecida) */
+const CITIES = ["indaiatuba","campinas"];
+function detectCity(kw){
+  const low = kw.toLowerCase();
+  for(const c of CITIES){ if(low.includes(c)) return c.charAt(0).toUpperCase()+c.slice(1); }
+  return "Outras";
+}
+
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ saved = {}; }
+
+let DATA = RAW.map((r,i)=>({
+  id:i, kw:r[0], vol:r[1], city:detectCity(r[0]),
+  pos: (saved[r[0]] !== undefined ? saved[r[0]] : 0)
+}));
+
+function persist(){
+  const o={}; DATA.forEach(d=>o[d.kw]=d.pos);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(o));
+}
+
+/* ---------- Helpers ---------- */
+function faixa(pos){
+  if(pos>=1 && pos<=1)  return {cls:"p1", lbl:"Top 1"};
+  if(pos>=1 && pos<=5)  return {cls:"p5", lbl:"Top 5"};
+  if(pos>=1 && pos<=10) return {cls:"p10",lbl:"Top 10"};
+  if(pos>=1 && pos<=20) return {cls:"p20",lbl:"Top 20"};
+  return {cls:"p0", lbl:"—"};
+}
+const fmt = n => n.toLocaleString("pt-BR");
+
+/* ---------- Estado de filtro ---------- */
+let currentCity = "all";
+let searchTerm = "";
+let sortKey = "vol", sortDir = -1;
+
+function filtered(){
+  return DATA.filter(d =>
+    (currentCity==="all" || d.city===currentCity) &&
+    (searchTerm==="" || d.kw.toLowerCase().includes(searchTerm))
+  );
+}
+
+/* ---------- Popular selects de cidade ---------- */
+function fillCitySelects(){
+  const cities = [...new Set(DATA.map(d=>d.city))].sort();
+  const opts = '<option value="all">Todas as cidades</option>' +
+    cities.map(c=>`<option value="${c}">${c}</option>`).join("");
+  document.getElementById("cityFilter").innerHTML = opts;
+  document.getElementById("cityFilter2").innerHTML = opts;
+  document.getElementById("cityFilter").value = currentCity;
+  document.getElementById("cityFilter2").value = currentCity;
+}
+
+/* ---------- Render Visão Geral ---------- */
+function renderGeral(){
+  const rows = filtered();
+  const t1  = rows.filter(d=>d.pos>=1 && d.pos<=1);
+  const t5  = rows.filter(d=>d.pos>=1 && d.pos<=5);
+  const t10 = rows.filter(d=>d.pos>=1 && d.pos<=10);
+  const t20 = rows.filter(d=>d.pos>=1 && d.pos<=20);
+  const vol = rows.reduce((s,d)=>s+d.vol,0);
+
+  document.getElementById("cKw").textContent  = rows.length;
+  document.getElementById("cVol").textContent = fmt(vol);
+  document.getElementById("cT1").textContent  = t1.length;
+  document.getElementById("cT5").textContent  = t5.length;
+  document.getElementById("cT10").textContent = t10.length;
+  document.getElementById("cT20").textContent = t20.length;
+
+  const li = d => `<li><span>${d.kw}</span><span class="pos">#${d.pos} &middot; ${fmt(d.vol)}</span></li>`;
+  const fill = (id,arr)=>{
+    const el=document.getElementById(id);
+    el.innerHTML = arr.length ? arr.sort((a,b)=>a.pos-b.pos).map(li).join("")
+      : '<div class="empty">Nenhuma palavra-chave nesta faixa ainda</div>';
+  };
+  fill("list1", t1);  fill("list5", t5);  fill("list10", t10); fill("list20", t20);
+  document.getElementById("n1").textContent  = t1.length;
+  document.getElementById("n5").textContent  = t5.length;
+  document.getElementById("n10").textContent = t10.length;
+  document.getElementById("n20").textContent = t20.length;
+}
+
+/* ---------- Render Tabela ---------- */
+function renderTable(){
+  const rows = filtered().slice().sort((a,b)=>{
+    let va,vb;
+    if(sortKey==="kw"){va=a.kw;vb=b.kw;}
+    else if(sortKey==="city"){va=a.city;vb=b.city;}
+    else if(sortKey==="pos"){va=a.pos||999;vb=b.pos||999;}
+    else {va=a.vol;vb=b.vol;}
+    if(va<vb) return -1*sortDir; if(va>vb) return 1*sortDir; return 0;
+  });
+  const tb = document.getElementById("tbody");
+  tb.innerHTML = rows.map(d=>{
+    const f=faixa(d.pos);
+    return `<tr>
+      <td>${d.kw}</td>
+      <td><span class="city-tag">📍 ${d.city}</span></td>
+      <td class="num">${fmt(d.vol)}</td>
+      <td class="num"><input class="posinput" type="number" min="0" max="100" value="${d.pos}" data-id="${d.id}"></td>
+      <td><span class="pill ${f.cls}">${f.lbl}</span></td>
+    </tr>`;
+  }).join("");
+
+  tb.querySelectorAll(".posinput").forEach(inp=>{
+    inp.addEventListener("change", e=>{
+      const id=+e.target.dataset.id;
+      let v=parseInt(e.target.value,10); if(isNaN(v)||v<0)v=0; if(v>100)v=100;
+      DATA.find(d=>d.id===id).pos=v;
+      persist(); renderAll();
+    });
+  });
+}
+
+function renderAll(){ renderGeral(); renderTable(); }
+
+/* ---------- Eventos ---------- */
+document.querySelectorAll(".tab").forEach(t=>{
+  t.addEventListener("click", ()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    const tab=t.dataset.tab;
+    document.getElementById("tab-geral").style.display  = tab==="geral"?"block":"none";
+    document.getElementById("tab-tabela").style.display = tab==="tabela"?"block":"none";
+  });
+});
+function syncCity(v){ currentCity=v;
+  document.getElementById("cityFilter").value=v;
+  document.getElementById("cityFilter2").value=v;
+  renderAll();
+}
+document.getElementById("cityFilter").addEventListener("change",e=>syncCity(e.target.value));
+document.getElementById("cityFilter2").addEventListener("change",e=>syncCity(e.target.value));
+document.getElementById("search").addEventListener("input",e=>{searchTerm=e.target.value.toLowerCase();renderTable();});
+document.getElementById("resetBtn").addEventListener("click",()=>{
+  if(confirm("Zerar todas as posições para 0?")){ DATA.forEach(d=>d.pos=0); persist(); renderAll(); }
+});
+document.querySelectorAll("th[data-sort]").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const k=th.dataset.sort;
+    if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir = (k==="kw"||k==="city")?1:-1;}
+    renderTable();
+  });
+});
+
+/* ---------- Init ---------- */
+fillCitySelects();
+renderAll();
+</script>
+</body>
+</html>
