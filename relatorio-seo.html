@@ -43,7 +43,8 @@
   .card.tot::after{background:var(--accent)} .card.vol::after{background:var(--rose)}
   .card.up::after{background:var(--green)} .card.down::after{background:var(--rose)}
 
-  .buckets{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:26px}
+  .buckets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:26px}
+  @media (max-width:820px){.buckets{grid-template-columns:1fr}}
   .bucket{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
   .bucket h3{margin:0;padding:13px 16px;font-size:14px;display:flex;justify-content:space-between;align-items:center;color:#fff}
   .bucket.b1 h3{background:linear-gradient(90deg,#16a34a,#15803d)}
@@ -79,8 +80,11 @@
   .gain.up{color:#16a34a}.gain.zero{color:var(--muted)}.gain.down{color:#e11d48}
   .city-tag{font-size:11px;color:var(--muted)}
   footer{color:var(--muted);font-size:12px;text-align:center;margin-top:30px}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:6px 0 18px}
-  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:6px 0 18px;align-items:center}
+  .legend .legend-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:7px 12px;cursor:pointer;font-size:12px;font-weight:600;transition:.15s}
+  .legend .legend-btn:hover{border-color:var(--accent);color:var(--txt)}
+  .legend .legend-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  .legend .legend-btn.active i{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
   .legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
   a.kw{color:inherit;text-decoration:none}
   a.kw:hover{color:var(--accent);text-decoration:underline}
@@ -194,12 +198,13 @@
         <input type="search" id="search" placeholder="Digite para filtrar..." style="width:100%">
       </div>
     </div>
-    <div class="legend">
-      <span><i style="background:#16a34a"></i> Top 1</span>
-      <span><i style="background:#65a30d"></i> Top 5</span>
-      <span><i style="background:#d97706"></i> Top 10</span>
-      <span><i style="background:#0ea5e9"></i> Top 20</span>
-      <span><i style="background:#64748b"></i> Fora do top 30</span>
+    <div class="legend" id="bandFilters">
+      <button type="button" class="legend-btn active" data-band="all">Todas</button>
+      <button type="button" class="legend-btn" data-band="1"><i style="background:#16a34a"></i> Top 1</button>
+      <button type="button" class="legend-btn" data-band="5"><i style="background:#65a30d"></i> Top 5</button>
+      <button type="button" class="legend-btn" data-band="10"><i style="background:#d97706"></i> Top 10</button>
+      <button type="button" class="legend-btn" data-band="20"><i style="background:#0ea5e9"></i> Top 20</button>
+      <button type="button" class="legend-btn" data-band="fora"><i style="background:#64748b"></i> Fora do top 30</button>
     </div>
     <div class="tablewrap">
       <table>
@@ -536,7 +541,7 @@
 </article>
   </section>
 
-  <footer>Gerado em 18/09/2026 08:24 a partir de Seo/posicao.xlsx · modelo adaptado de <a href="https://pirondibr.github.io/clinica-cidade-seo/relatorio-seo-projecao.html" style="color:#0f766e">relatorio-seo-projecao</a> · volume preenchido só quando conhecido</footer>
+  <footer>Gerado em 18/09/2026 08:27 a partir de Seo/posicao.xlsx · modelo adaptado de <a href="https://pirondibr.github.io/clinica-cidade-seo/relatorio-seo-projecao.html" style="color:#0f766e">relatorio-seo-projecao</a> · volume preenchido só quando conhecido</footer>
 </div>
 
 <script>
@@ -674,9 +679,28 @@ const fmtPos = p => p>0 ? ("#"+p) : "—";
 
 let currentCity = "all";
 let searchTerm = "";
+let bandFilter = "all";
 let sortKey = "pos", sortDir = 1;
 
+function matchBand(d){
+  if(bandFilter==="all") return true;
+  if(bandFilter==="1") return d.pos===1;
+  if(bandFilter==="5") return d.pos>=1 && d.pos<=5;
+  if(bandFilter==="10") return d.pos>=1 && d.pos<=10;
+  if(bandFilter==="20") return d.pos>=1 && d.pos<=20;
+  if(bandFilter==="fora") return !d.pos || d.pos>30;
+  return true;
+}
+
 function filtered(){
+  return DATA.filter(d =>
+    (currentCity==="all" || d.city===currentCity) &&
+    matchBand(d) &&
+    (searchTerm==="" || d.kw.toLowerCase().includes(searchTerm) || d.city.toLowerCase().includes(searchTerm))
+  );
+}
+
+function filteredGeral(){
   return DATA.filter(d =>
     (currentCity==="all" || d.city===currentCity) &&
     (searchTerm==="" || d.kw.toLowerCase().includes(searchTerm) || d.city.toLowerCase().includes(searchTerm))
@@ -692,7 +716,7 @@ function fillCitySelects(){
 }
 
 function renderGeral(){
-  const rows = filtered();
+  const rows = filteredGeral();
   const t1  = rows.filter(d=>d.pos===1);
   const t5  = rows.filter(d=>d.pos>=1 && d.pos<=5);
   const t10 = rows.filter(d=>d.pos>=1 && d.pos<=10);
@@ -776,6 +800,13 @@ function syncCity(v){ currentCity=v;
 document.getElementById("cityFilter").addEventListener("change",e=>syncCity(e.target.value));
 document.getElementById("cityFilter2").addEventListener("change",e=>syncCity(e.target.value));
 document.getElementById("search").addEventListener("input",e=>{searchTerm=e.target.value.toLowerCase();renderTable();});
+document.querySelectorAll("#bandFilters .legend-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    bandFilter = btn.dataset.band || "all";
+    document.querySelectorAll("#bandFilters .legend-btn").forEach(b=>b.classList.toggle("active", b===btn));
+    renderTable();
+  });
+});
 document.querySelectorAll("th[data-sort]").forEach(th=>{
   th.addEventListener("click",()=>{
     const k=th.dataset.sort;
