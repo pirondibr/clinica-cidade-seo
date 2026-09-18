@@ -541,7 +541,7 @@
 </article>
   </section>
 
-  <footer>Gerado em 18/09/2026 08:27 a partir de Seo/posicao.xlsx · modelo adaptado de <a href="https://pirondibr.github.io/clinica-cidade-seo/relatorio-seo-projecao.html" style="color:#0f766e">relatorio-seo-projecao</a> · volume preenchido só quando conhecido</footer>
+  <footer>Gerado em 18/09/2026 08:31 a partir de Seo/posicao.xlsx · modelo adaptado de <a href="https://pirondibr.github.io/clinica-cidade-seo/relatorio-seo-projecao.html" style="color:#0f766e">relatorio-seo-projecao</a> · volume preenchido só quando conhecido</footer>
 </div>
 
 <script>
@@ -730,10 +730,10 @@ function renderGeral(){
   document.getElementById("cT10").textContent = t10.length;
   document.getElementById("cT20").textContent = t20.length;
 
-  const li = d => `<li><a href="${d.url||'#'}" target="_blank" rel="noopener">${d.kw}</a><span class="pos">#${d.pos}${d.vol?(" · "+fmt(d.vol)):""}</span></li>`;
+  const li = d => `<li><a href="${d.url||'#'}" target="_blank" rel="noopener">${d.kw}</a><span class="pos">#${d.pos}</span></li>`;
   const fill = (id,arr)=>{
     const el=document.getElementById(id);
-    el.innerHTML = arr.length ? arr.slice().sort((a,b)=>a.pos-b.pos||b.vol-a.vol).map(li).join("")
+    el.innerHTML = arr.length ? arr.slice().sort((a,b)=>a.pos-b.pos||a.kw.localeCompare(b.kw,"pt-BR")).map(li).join("")
       : '<div class="empty">Nenhuma palavra-chave nesta faixa</div>';
   };
   fill("list1", t1);  fill("list5", t5);  fill("list10", t10); fill("list20", t20);
