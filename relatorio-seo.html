@@ -166,11 +166,11 @@
 
     <div class="chart-panel">
       <div class="chart-head">
-        <h2>Palavras-chave — evolução do ranking</h2>
+        <h2 id="geralChartTitle">Palavras-chave — evolução do ranking</h2>
       </div>
       <div class="chart-legend" id="chartLegend"></div>
       <div class="chart-wrap"><canvas id="rankChart"></canvas></div>
-      <div class="chart-note">Início do trabalho: jul/2026 com tudo em 0. Pontos seguintes = checagens ScrapingBee (top 30). Séries cumulativas: Top 1 / 5 / 10 / 20 / 30.</div>
+      <div class="chart-note" id="geralChartNote">Início do trabalho: jul/2026 com tudo em 0. Pontos seguintes = checagens ScrapingBee (top 30). Séries cumulativas: Top 1 / 5 / 10 / 20 / 30.</div>
     </div>
 
     <div class="buckets">
@@ -541,7 +541,7 @@
 </article>
   </section>
 
-  <footer>Gerado em 18/09/2026 08:31 a partir de Seo/posicao.xlsx · modelo adaptado de <a href="https://pirondibr.github.io/clinica-cidade-seo/relatorio-seo-projecao.html" style="color:#0f766e">relatorio-seo-projecao</a> · volume preenchido só quando conhecido</footer>
+  <footer>Gerado em 18/09/2026 08:36 a partir de Seo/posicao.xlsx · modelo adaptado de <a href="https://pirondibr.github.io/clinica-cidade-seo/relatorio-seo-projecao.html" style="color:#0f766e">relatorio-seo-projecao</a> · volume preenchido só quando conhecido</footer>
 </div>
 
 <script>
@@ -619,10 +619,34 @@ function bindLegend(el){
 function buildLegend(){ bindLegend(document.getElementById("chartLegend")); }
 function buildCityLegend(){ bindLegend(document.getElementById("cityChartLegend")); }
 
+function activeHistory(){
+  if(currentCity==="all") return HISTORY;
+  const cityData = (CITY_HISTORY.cities || {})[currentCity];
+  if(!cityData || !cityData.series) return HISTORY;
+  return {
+    labels: CITY_HISTORY.labels || HISTORY.labels,
+    series: cityData.series,
+    kw: cityData.kw || 0
+  };
+}
+
 function renderChart(){
+  const hist = activeHistory();
+  const title = document.getElementById("geralChartTitle");
+  const note = document.getElementById("geralChartNote");
+  if(title){
+    title.textContent = currentCity==="all"
+      ? "Palavras-chave — evolução do ranking"
+      : currentCity + " — evolução do ranking";
+  }
+  if(note){
+    note.textContent = currentCity==="all"
+      ? "Início do trabalho: jul/2026 com tudo em 0. Pontos seguintes = checagens ScrapingBee (top 30). Séries cumulativas: Top 1 / 5 / 10 / 20 / 30."
+      : `Filtro: ${currentCity} (${hist.kw||0} palavras). Séries cumulativas Top 1 / 5 / 10 / 20 / 30.`;
+  }
   const cfg = {
     type: "line",
-    data: { labels: HISTORY.labels, datasets: lineDatasets(HISTORY.series) },
+    data: { labels: hist.labels, datasets: lineDatasets(hist.series) },
     options: chartOptions()
   };
   if(chart){ chart.destroy(); }
@@ -636,7 +660,7 @@ function buildCityCharts(){
   const cities = Object.keys(CITY_HISTORY.cities || {}).sort((a,b)=>a.localeCompare(b,"pt-BR"));
   wrap.innerHTML = cities.map((city, i) => {
     const meta = CITY_HISTORY.cities[city] || {};
-    return `<div class="chart-panel city-chart">
+    return `<div class="chart-panel city-chart" id="city-block-${i}" data-city="${city.replace(/"/g,"&quot;")}">
       <div class="chart-head">
         <h2>${city}</h2>
         <span class="meta">${meta.kw||0} palavras</span>
@@ -645,6 +669,7 @@ function buildCityCharts(){
     </div>`;
   }).join("");
   renderCityCharts();
+  highlightCityBlock();
 }
 
 function renderCityCharts(){
@@ -662,6 +687,15 @@ function renderCityCharts(){
       },
       options: chartOptions()
     });
+  });
+}
+
+function highlightCityBlock(){
+  if(!cityChartsBuilt) return;
+  document.querySelectorAll("#cityCharts .city-chart").forEach(el => {
+    const match = currentCity==="all" || el.dataset.city===currentCity;
+    el.style.display = (currentCity==="all" || match) ? "" : "none";
+    el.style.outline = (currentCity!=="all" && match) ? "2px solid #0f766e" : "none";
   });
 }
 
@@ -701,16 +735,13 @@ function filtered(){
 }
 
 function filteredGeral(){
-  return DATA.filter(d =>
-    (currentCity==="all" || d.city===currentCity) &&
-    (searchTerm==="" || d.kw.toLowerCase().includes(searchTerm) || d.city.toLowerCase().includes(searchTerm))
-  );
+  return DATA.filter(d => (currentCity==="all" || d.city===currentCity));
 }
 
 function fillCitySelects(){
-  const cities = [...new Set(DATA.map(d=>d.city))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  const cities = [...new Set(DATA.map(d=>d.city).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
   const opts = '<option value="all">Todas as cidades</option>' +
-    cities.map(c=>`<option value="${c}">${c}</option>`).join("");
+    cities.map(c=>`<option value="${c.replace(/"/g,"&quot;")}">${c}</option>`).join("");
   document.getElementById("cityFilter").innerHTML = opts;
   document.getElementById("cityFilter2").innerHTML = opts;
 }
@@ -778,7 +809,7 @@ function renderTable(){
   }).join("");
 }
 
-function renderAll(){ renderGeral(); renderTable(); }
+function renderAll(){ renderGeral(); renderTable(); renderChart(); highlightCityBlock(); }
 
 document.querySelectorAll(".tab").forEach(t=>{
   t.addEventListener("click", ()=>{
@@ -789,12 +820,19 @@ document.querySelectorAll(".tab").forEach(t=>{
     document.getElementById("tab-cidades").style.display  = tab==="cidades"?"block":"none";
     document.getElementById("tab-tabela").style.display   = tab==="tabela"?"block":"none";
     document.getElementById("tab-exemplos").style.display = tab==="exemplos"?"block":"none";
-    if(tab==="cidades") buildCityCharts();
+    if(tab==="cidades"){
+      buildCityCharts();
+      highlightCityBlock();
+    }
+    if(tab==="geral") renderChart();
   });
 });
-function syncCity(v){ currentCity=v;
-  document.getElementById("cityFilter").value=v;
-  document.getElementById("cityFilter2").value=v;
+function syncCity(v){
+  currentCity = v || "all";
+  const a = document.getElementById("cityFilter");
+  const b = document.getElementById("cityFilter2");
+  if(a) a.value = currentCity;
+  if(b) b.value = currentCity;
   renderAll();
 }
 document.getElementById("cityFilter").addEventListener("change",e=>syncCity(e.target.value));
@@ -818,7 +856,6 @@ document.querySelectorAll("th[data-sort]").forEach(th=>{
 fillCitySelects();
 buildLegend();
 buildCityLegend();
-renderChart();
 renderAll();
 </script>
 </body>
