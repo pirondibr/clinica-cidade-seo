@@ -1,0 +1,193 @@
+{
+  "source": "https://www.clinicadacidade.com.br/exames/",
+  "count": 31,
+  "status": "criado",
+  "exames": [
+    {
+      "nome": "Colonoscopia",
+      "slug": "colonoscopia",
+      "url": "https://www.clinicadacidade.com.br/exames/colonoscopia/",
+      "position": 1
+    },
+    {
+      "nome": "Ecocardiograma Bidimensional",
+      "slug": "ecocardiograma-bidimensional",
+      "url": "https://www.clinicadacidade.com.br/exames/ecocardiograma-bidimensional/",
+      "position": 2
+    },
+    {
+      "nome": "Endoscopia",
+      "slug": "endoscopia",
+      "url": "https://www.clinicadacidade.com.br/exames/endoscopia/",
+      "position": 3
+    },
+    {
+      "nome": "Espirometria",
+      "slug": "espirometria",
+      "url": "https://www.clinicadacidade.com.br/exames/espirometria/",
+      "position": 4
+    },
+    {
+      "nome": "Exame Toxicológico",
+      "slug": "exame-toxicologico",
+      "url": "https://www.clinicadacidade.com.br/exames/exame-toxicologico/",
+      "position": 5
+    },
+    {
+      "nome": "Exames Cardiológicos",
+      "slug": "exames-cardiologicos",
+      "url": "https://www.clinicadacidade.com.br/exames/exames-cardiologicos/",
+      "position": 6
+    },
+    {
+      "nome": "Exames de Nutrição",
+      "slug": "exames-de-nutricao",
+      "url": "https://www.clinicadacidade.com.br/exames/exames-de-nutricao/",
+      "position": 7
+    },
+    {
+      "nome": "Exames Laboratoriais",
+      "slug": "exames-laboratoriais",
+      "url": "https://www.clinicadacidade.com.br/exames/exames-laboratoriais/",
+      "position": 8
+    },
+    {
+      "nome": "Exames Neurológicos",
+      "slug": "exames-neurologicos",
+      "url": "https://www.clinicadacidade.com.br/exames/exames-neurologicos/",
+      "position": 9
+    },
+    {
+      "nome": "Exames Oftalmológicos",
+      "slug": "exames-oftalmologicos",
+      "url": "https://www.clinicadacidade.com.br/exames/exames-oftalmologicos/",
+      "position": 10
+    },
+    {
+      "nome": "Exames Pneumológicos",
+      "slug": "exames-pneumologicos",
+      "url": "https://www.clinicadacidade.com.br/exames/exames-pneumologicos/",
+      "position": 11
+    },
+    {
+      "nome": "Mamografia",
+      "slug": "mamografia",
+      "url": "https://www.clinicadacidade.com.br/exames/mamografia/",
+      "position": 12
+    },
+    {
+      "nome": "Raio-X",
+      "slug": "raio-x",
+      "url": "https://www.clinicadacidade.com.br/exames/raio-x/",
+      "position": 13
+    },
+    {
+      "nome": "Ressonância Magnética",
+      "slug": "ressonancia-magnetica",
+      "url": "https://www.clinicadacidade.com.br/exames/ressonancia-magnetica/",
+      "position": 14
+    },
+    {
+      "nome": "Teste de DNA",
+      "slug": "teste-de-dna",
+      "url": "https://www.clinicadacidade.com.br/exames/teste-de-dna/",
+      "position": 15
+    },
+    {
+      "nome": "Tomografia Computadorizada",
+      "slug": "tomografia-computadorizada",
+      "url": "https://www.clinicadacidade.com.br/exames/tomografia-computadorizada/",
+      "position": 16
+    },
+    {
+      "nome": "Ultrassonografia Abdômen e Pélvica",
+      "slug": "ultrassonografia-abdomen-e-pelvica",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-abdomen-e-pelvica/",
+      "position": 17
+    },
+    {
+      "nome": "Ultrassonografia com Doppler",
+      "slug": "ultrassonografia-com-doppler",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-com-doppler/",
+      "position": 18
+    },
+    {
+      "nome": "Ultrassonografia de Estruturas Superficiais",
+      "slug": "ultrassonografia-de-estruturas-superficiais",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-de-estruturas-superficiais/",
+      "position": 19
+    },
+    {
+      "nome": "Ultrassonografia Hipocôndrio",
+      "slug": "ultrassonografia-hipocondrio",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-hipocondrio/",
+      "position": 20
+    },
+    {
+      "nome": "Ultrassonografia Membros Inferiores",
+      "slug": "ultrassonografia-membros-inferiores",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-membros-inferiores/",
+      "position": 21
+    },
+    {
+      "nome": "Ultrassonografia Membros Superiores",
+      "slug": "ultrassonografia-membros-superiores",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-membros-superiores/",
+      "position": 22
+    },
+    {
+      "nome": "Ultrassonografia Morfológica",
+      "slug": "ultrassonografia-morfologica",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-morfologica/",
+      "position": 23
+    },
+    {
+      "nome": "Ultrassonografia Obstétrica",
+      "slug": "ultrassonografia-obstetrica",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-obstetrica/",
+      "position": 24
+    },
+    {
+      "nome": "Ultrassonografia Órgãos e Estruturas Superficiais",
+      "slug": "ultrassonografia-orgaos-e-estruturas-superficiais",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-orgaos-e-estruturas-superficiais/",
+      "position": 25
+    },
+    {
+      "nome": "Ultrassonografia Pubis",
+      "slug": "ultrassonografia-pubis",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-pubis/",
+      "position": 26
+    },
+    {
+      "nome": "Ultrassonografia Quadril",
+      "slug": "ultrassonografia-quadril",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-quadril/",
+      "position": 27
+    },
+    {
+      "nome": "Ultrassonografia Região Supraclavicular",
+      "slug": "ultrassonografia-regiao-supraclavicular",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-regiao-supraclavicular/",
+      "position": 28
+    },
+    {
+      "nome": "Ultrassonografia Tórax Extra Cardíaco",
+      "slug": "ultrassonografia-torax-extra-cardiaco",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-torax-extra-cardiaco/",
+      "position": 29
+    },
+    {
+      "nome": "Ultrassonografia Transfontanela",
+      "slug": "ultrassonografia-transfontanela",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-transfontanela/",
+      "position": 30
+    },
+    {
+      "nome": "Ultrassonografia Transvaginal",
+      "slug": "ultrassonografia-transvaginal",
+      "url": "https://www.clinicadacidade.com.br/exames/ultrassonografia-transvaginal/",
+      "position": 31
+    }
+  ]
+}
