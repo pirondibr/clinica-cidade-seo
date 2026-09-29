@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEO Keywords — 5 especialidades | Clínica da Cidade</title>
+  <style>
+    :root {
+      --bg: #f2f5f7;
+      --ink: #132029;
+      --muted: #5a6a75;
+      --line: #d5dee4;
+      --card: #ffffff;
+      --tema: #0b6e4f;
+      --direta: #1d4e89;
+      --indireta: #9a3412;
+      --up: #0b6e4f;
+      --down: #b42318;
+      --accent: #0e7c7b;
+      --tab: #e8eef2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1100px 480px at 8% -8%, #d8f1eb 0%, transparent 55%),
+        radial-gradient(900px 420px at 100% 0%, #d7e6f4 0%, transparent 50%),
+        var(--bg);
+      line-height: 1.45;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 28px 18px 72px; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: .12em; font-size: 12px;
+      color: var(--accent); font-weight: 700; margin: 0 0 8px;
+    }
+    h1 {
+      margin: 0 0 8px; font-size: clamp(1.55rem, 2.4vw, 2.15rem);
+      letter-spacing: -0.02em;
+    }
+    .sub { margin: 0; color: var(--muted); max-width: 70ch; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .pill {
+      background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+      padding: 6px 12px; font-size: 13px; color: var(--muted);
+    }
+
+    .nav-shell {
+      margin-top: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      position: sticky;
+      top: 8px;
+      z-index: 20;
+      box-shadow: 0 8px 24px rgba(19, 32, 41, 0.04);
+    }
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .tab {
+      border: 1px solid var(--line);
+      background: var(--tab);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .tab[aria-selected="true"] {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .tab:hover { filter: brightness(0.98); }
+
+    .overview {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+    @media (max-width: 980px) {
+      .overview { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .overview { grid-template-columns: 1fr; }
+    }
+    .overview-card {
+      text-align: left;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      cursor: pointer;
+    }
+    .overview-card:hover { border-color: #9fc4c2; }
+    .oc-label { display: block; font-weight: 700; }
+    .oc-vol { display: block; font-size: 1.35rem; font-weight: 750; margin-top: 4px; }
+    .oc-vol small { font-size: 12px; color: var(--muted); font-weight: 600; margin-left: 2px; }
+    .oc-meta { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+    .panel { margin-top: 18px; }
+    .panel[hidden] { display: none !important; }
+    .panel-head h2 { margin: 0 0 4px; font-size: 1.25rem; }
+    .panel-head p { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px;
+    }
+    @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+    }
+    .stat .label {
+      font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em;
+    }
+    .stat .value { font-size: 1.45rem; font-weight: 700; margin-top: 4px; }
+
+    .subh { margin: 8px 0 8px; font-size: .95rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .chip {
+      background: #eef7f6; border: 1px solid #cfe6e3; border-radius: 12px;
+      padding: 10px 12px; min-width: 130px;
+    }
+    .chip strong { display: block; font-size: 1.05rem; }
+    .chip span { color: var(--muted); font-size: 13px; }
+
+    .lists {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;
+    }
+    @media (max-width: 800px) { .lists { grid-template-columns: 1fr; } }
+    .list-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+    }
+    .list-card h3 { margin: 0 0 8px; font-size: .95rem; }
+    .list-card ol { margin: 0; padding-left: 18px; }
+    .list-card li { margin: 5px 0; }
+    .list-card .v { color: var(--muted); font-size: 13px; }
+
+    .section {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 14px 14px 6px;
+    }
+    .section h3 { margin: 0 0 4px; font-size: .95rem; }
+    .section p { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
+    .table-wrap { overflow: auto; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 13px; min-width: 980px;
+    }
+    th, td {
+      padding: 9px 7px; border-bottom: 1px solid var(--line);
+      text-align: left; vertical-align: middle;
+    }
+    th {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--muted); font-weight: 650; background: #fbfcfd;
+    }
+    .kw { font-weight: 600; }
+    .match { font-size: 11px; color: var(--muted); font-weight: 500; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .vol { font-weight: 700; }
+    .muted { color: var(--muted); }
+    .m { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .04em; padding: 3px 7px; border-radius: 999px; color: #fff;
+    }
+    .badge.tema { background: var(--tema); }
+    .badge.direta { background: var(--direta); }
+    .badge.indireta { background: var(--indireta); }
+    .up { color: var(--up); font-weight: 650; }
+    .down { color: var(--down); font-weight: 650; }
+    footer {
+      margin-top: 18px; color: var(--muted); font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Blog SEO · Clínica da Cidade</p>
+    <h1>Pesquisa de palavras — 5 especialidades</h1>
+    <p class="sub">
+      Temas para <strong>clinicadacidade.com.br</strong>: 1 especialidade por rodada,
+      com 3–10 palavras diretas e 3–10 indiretas. Volumes mensais via DataForSEO (Google Ads · Brasil).
+      Termos de marca concorrente (ex.: Unimed) foram excluídos.
+    </p>
+    <div class="meta">
+      <span class="pill">Local: Brasil (2076)</span>
+      <span class="pill">Fonte: DataForSEO · Google Ads</span>
+      <span class="pill">Gerado em: 2026-09-29</span>
+      <span class="pill">5 temas</span>
+    </div>
+
+    <div class="nav-shell">
+      <div class="tabs" role="tablist" aria-label="Especialidades">
+        <button class="tab" role="tab" id="tab-home" data-target="home" aria-selected="true">Início</button><button class="tab" role="tab" id="tab-cardiologista" data-target="cardiologista" aria-selected="false">Cardiologista</button><button class="tab" role="tab" id="tab-dermatologista" data-target="dermatologista" aria-selected="false">Dermatologista</button><button class="tab" role="tab" id="tab-endocrinologista" data-target="endocrinologista" aria-selected="false">Endocrinologista</button><button class="tab" role="tab" id="tab-ginecologista" data-target="ginecologista" aria-selected="false">Ginecologista</button><button class="tab" role="tab" id="tab-oftalmologista" data-target="oftalmologista" aria-selected="false">Oftalmologista</button>
+      </div>
+    </div>
+
+    <section class="panel" id="panel-home" role="tabpanel">
+      <div class="panel-head">
+        <h2>Navegação pelos temas</h2>
+        <p>Escolha uma especialidade nas abas acima ou clique em um card para abrir a pesquisa completa.</p>
+      </div>
+      <div class="overview" id="overview">
+        
+        <button class="overview-card" data-target="cardiologista">
+          <span class="oc-label">Cardiologista</span>
+          <span class="oc-vol">33.100<small>/mês</small></span>
+          <span class="oc-meta">8 diretas · 10 indiretas</span>
+        </button>
+        
+        <button class="overview-card" data-target="dermatologista">
+          <span class="oc-label">Dermatologista</span>
+          <span class="oc-vol">90.500<small>/mês</small></span>
+          <span class="oc-meta">8 diretas · 10 indiretas</span>
+        </button>
+        
+        <button class="overview-card" data-target="endocrinologista">
+          <span class="oc-label">Endocrinologista</span>
+          <span class="oc-vol">22.200<small>/mês</small></span>
+          <span class="oc-meta">8 diretas · 10 indiretas</span>
+        </button>
+        
+        <button class="overview-card" data-target="ginecologista">
+          <span class="oc-label">Ginecologista</span>
+          <span class="oc-vol">9.900<small>/mês</small></span>
+          <span class="oc-meta">8 diretas · 10 indiretas</span>
+        </button>
+        
+        <button class="overview-card" data-target="oftalmologista">
+          <span class="oc-label">Oftalmologista</span>
+          <span class="oc-vol">201.000<small>/mês</small></span>
+          <span class="oc-meta">8 diretas · 10 indiretas</span>
+        </button>
+        
+      </div>
+    </section>
+
+    
+    <section class="panel" id="panel-cardiologista" role="tabpanel" hidden>
+      <div class="panel-head">
+        <h2>Tema: Cardiologista</h2>
+        <p>1 especialidade + 8 diretas + 10 indiretas · 17/19 com volume</p>
+      </div>
+
+      <div class="grid">
+        <div class="stat">
+          <div class="label">Volume do tema</div>
+          <div class="value">33.100</div>
+        </div>
+        <div class="stat">
+          <div class="label">Diretas</div>
+          <div class="value">8</div>
+        </div>
+        <div class="stat">
+          <div class="label">Indiretas</div>
+          <div class="value">10</div>
+        </div>
+        <div class="stat">
+          <div class="label">Com volume</div>
+          <div class="value">17/19</div>
+        </div>
+      </div>
+
+      <h3 class="subh">Maiores volumes</h3>
+      <div class="chips"><div class="chip"><strong>135.000</strong><span>eletrocardiograma</span></div><div class="chip"><strong>110.000</strong><span>pressao alta</span></div><div class="chip"><strong>60.500</strong><span>dor no peito</span></div><div class="chip"><strong>60.500</strong><span>infarto</span></div><div class="chip"><strong>60.500</strong><span>teste ergometrico</span></div></div>
+
+      <div class="lists">
+        <div class="list-card">
+          <h3>Palavras diretas</h3>
+          <ol><li>o que é cardiologia <span class='v'>(480/mês)</span></li><li>o que faz o cardiologista <span class='v'>(1.300/mês)</span></li><li>quanto custa consulta cardiologista <span class='v'>(170/mês)</span></li><li>marcar consulta cardiologista <span class='v'>(30/mês)</span></li><li>medico do coracao <span class='v'>(1.600/mês)</span></li><li>cardiologista esportivo <span class='v'>(590/mês)</span></li><li>quando procurar um cardiologista <span class='v'>(—/mês)</span></li><li>consulta cardiologista <span class='v'>(—/mês)</span></li></ol>
+        </div>
+        <div class="list-card">
+          <h3>Palavras indiretas</h3>
+          <ol><li>eletrocardiograma <span class='v'>(135.000/mês)</span></li><li>pressao alta <span class='v'>(110.000/mês)</span></li><li>dor no peito <span class='v'>(60.500/mês)</span></li><li>infarto <span class='v'>(60.500/mês)</span></li><li>teste ergometrico <span class='v'>(60.500/mês)</span></li><li>colesterol alto <span class='v'>(49.500/mês)</span></li><li>angina <span class='v'>(33.100/mês)</span></li><li>holter 24 horas <span class='v'>(33.100/mês)</span></li><li>palpitação <span class='v'>(6.600/mês)</span></li><li>fibrilacao atrial <span class='v'>(6.600/mês)</span></li></ol>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Tabela — volume, CPC, competição e tendência</h3>
+        <p>Volume médio mensal (Google Ads / DataForSEO · Brasil). Δ6m / Δ12m vs. mês mais recente.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Palavra</th>
+                <th>Vol. médio</th>
+                <th>Último mês</th>
+                <th>Ref.</th>
+                <th>CPC</th>
+                <th>Competição</th>
+                <th>Idx</th>
+                <th>Δ 6m</th>
+                <th>Δ 12m</th>
+                <th>2026-03</th><th>2026-04</th><th>2026-05</th><th>2026-06</th><th>2026-07</th><th>2026-08</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+      <tr>
+        <td><span class="badge tema">tema</span></td>
+        <td class="kw">cardiologista</td>
+        <td class="num vol">33.100</td>
+        <td class="num">33.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,08</td>
+        <td>MEDIUM</td>
+        <td class="num">34</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.3%</td>
+        <td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que é cardiologia</td>
+        <td class="num vol">480</td>
+        <td class="num">480</td>
+        <td class="muted">2026-08</td>
+        <td class="num">—</td>
+        <td>LOW</td>
+        <td class="num">1</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">590</td><td class="m">480</td><td class="m">480</td><td class="m">390</td><td class="m">480</td><td class="m">480</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que faz o cardiologista</td>
+        <td class="num vol">1.300</td>
+        <td class="num">1.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 5,99</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num down">-23.1%</td>
+        <td class="num down">-37.5%</td>
+        <td class="m">1.300</td><td class="m">1.300</td><td class="m">1.000</td><td class="m">1.000</td><td class="m">1.000</td><td class="m">1.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quanto custa consulta cardiologista</td>
+        <td class="num vol">170</td>
+        <td class="num">210</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,48</td>
+        <td>MEDIUM</td>
+        <td class="num">39</td>
+        <td class="num up">+23.5%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">170</td><td class="m">170</td><td class="m">210</td><td class="m">170</td><td class="m">210</td><td class="m">210</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">marcar consulta cardiologista</td>
+        <td class="num vol">30</td>
+        <td class="num">40</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,47</td>
+        <td>HIGH</td>
+        <td class="num">90</td>
+        <td class="num up">+33.3%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">30</td><td class="m">40</td><td class="m">30</td><td class="m">40</td><td class="m">20</td><td class="m">40</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">medico do coracao</td>
+        <td class="num vol">1.600</td>
+        <td class="num">1.600</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,51</td>
+        <td>LOW</td>
+        <td class="num">16</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-15.8%</td>
+        <td class="m">2.400</td><td class="m">1.600</td><td class="m">1.900</td><td class="m">1.600</td><td class="m">1.600</td><td class="m">1.600</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">cardiologista esportivo</td>
+        <td class="num vol">590</td>
+        <td class="num">720</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,31</td>
+        <td>MEDIUM</td>
+        <td class="num">66</td>
+        <td class="num up">+22.0%</td>
+        <td class="num up">+22.0%</td>
+        <td class="m">720</td><td class="m">720</td><td class="m">720</td><td class="m">720</td><td class="m">720</td><td class="m">720</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quando procurar um cardiologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">consulta cardiologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">eletrocardiograma</td>
+        <td class="num vol">135.000</td>
+        <td class="num">135.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,61</td>
+        <td>LOW</td>
+        <td class="num">8</td>
+        <td class="num up">+22.7%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">pressao alta</td>
+        <td class="num vol">110.000</td>
+        <td class="num">110.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,40</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num up">+21.5%</td>
+        <td class="num down">-33.3%</td>
+        <td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">dor no peito</td>
+        <td class="num vol">60.500</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,21</td>
+        <td>LOW</td>
+        <td class="num">6</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">74.000</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">infarto</td>
+        <td class="num vol">60.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,29</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">49.500</td><td class="m">74.000</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">teste ergometrico</td>
+        <td class="num vol">60.500</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,78</td>
+        <td>LOW</td>
+        <td class="num">16</td>
+        <td class="num up">+22.2%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">49.500</td><td class="m">60.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">colesterol alto</td>
+        <td class="num vol">49.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,27</td>
+        <td>LOW</td>
+        <td class="num">7</td>
+        <td class="num up">+22.2%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">40.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">angina</td>
+        <td class="num vol">33.100</td>
+        <td class="num">33.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,27</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">40.500</td><td class="m">40.500</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">27.100</td><td class="m">33.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">holter 24 horas</td>
+        <td class="num vol">33.100</td>
+        <td class="num">40.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,82</td>
+        <td>LOW</td>
+        <td class="num">9</td>
+        <td class="num up">+22.4%</td>
+        <td class="num up">+22.4%</td>
+        <td class="m">40.500</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">40.500</td><td class="m">40.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">palpitação</td>
+        <td class="num vol">6.600</td>
+        <td class="num">5.400</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,83</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">6.600</td><td class="m">6.600</td><td class="m">6.600</td><td class="m">5.400</td><td class="m">12.100</td><td class="m">5.400</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">fibrilacao atrial</td>
+        <td class="num vol">6.600</td>
+        <td class="num">6.600</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,09</td>
+        <td>LOW</td>
+        <td class="num">4</td>
+        <td class="num up">+50.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">8.100</td><td class="m">8.100</td><td class="m">6.600</td><td class="m">5.400</td><td class="m">3.600</td><td class="m">6.600</td>
+      </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="panel" id="panel-dermatologista" role="tabpanel" hidden>
+      <div class="panel-head">
+        <h2>Tema: Dermatologista</h2>
+        <p>1 especialidade + 8 diretas + 10 indiretas · 16/19 com volume</p>
+      </div>
+
+      <div class="grid">
+        <div class="stat">
+          <div class="label">Volume do tema</div>
+          <div class="value">90.500</div>
+        </div>
+        <div class="stat">
+          <div class="label">Diretas</div>
+          <div class="value">8</div>
+        </div>
+        <div class="stat">
+          <div class="label">Indiretas</div>
+          <div class="value">10</div>
+        </div>
+        <div class="stat">
+          <div class="label">Com volume</div>
+          <div class="value">16/19</div>
+        </div>
+      </div>
+
+      <h3 class="subh">Maiores volumes</h3>
+      <div class="chips"><div class="chip"><strong>165.000</strong><span>dermatite</span></div><div class="chip"><strong>135.000</strong><span>alopecia</span></div><div class="chip"><strong>90.500</strong><span>dermatologista</span></div><div class="chip"><strong>74.000</strong><span>psoriase</span></div><div class="chip"><strong>74.000</strong><span>micose</span></div></div>
+
+      <div class="lists">
+        <div class="list-card">
+          <h3>Palavras diretas</h3>
+          <ol><li>o que é dermatologia <span class='v'>(1.900/mês)</span></li><li>o que faz o dermatologista <span class='v'>(2.900/mês)</span></li><li>quando procurar dermatologista <span class='v'>(20/mês)</span></li><li>dermatologista perto de mim <span class='v'>(8.100/mês)</span></li><li>biopsia de pele <span class='v'>(2.900/mês)</span></li><li>consulta dermatologista <span class='v'>(—/mês)</span></li><li>quanto custa consulta dermatologista <span class='v'>(—/mês)</span></li><li>dermatologista particular <span class='v'>(—/mês)</span></li></ol>
+        </div>
+        <div class="list-card">
+          <h3>Palavras indiretas</h3>
+          <ol><li>dermatite <span class='v'>(165.000/mês)</span></li><li>alopecia <span class='v'>(135.000/mês)</span></li><li>psoriase <span class='v'>(74.000/mês)</span></li><li>micose <span class='v'>(74.000/mês)</span></li><li>rosacea <span class='v'>(74.000/mês)</span></li><li>melasma <span class='v'>(60.500/mês)</span></li><li>verruga <span class='v'>(49.500/mês)</span></li><li>acne <span class='v'>(40.500/mês)</span></li><li>queda de cabelo <span class='v'>(22.200/mês)</span></li><li>manchas na pele <span class='v'>(18.100/mês)</span></li></ol>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Tabela — volume, CPC, competição e tendência</h3>
+        <p>Volume médio mensal (Google Ads / DataForSEO · Brasil). Δ6m / Δ12m vs. mês mais recente.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Palavra</th>
+                <th>Vol. médio</th>
+                <th>Último mês</th>
+                <th>Ref.</th>
+                <th>CPC</th>
+                <th>Competição</th>
+                <th>Idx</th>
+                <th>Δ 6m</th>
+                <th>Δ 12m</th>
+                <th>2026-03</th><th>2026-04</th><th>2026-05</th><th>2026-06</th><th>2026-07</th><th>2026-08</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+      <tr>
+        <td><span class="badge tema">tema</span></td>
+        <td class="kw">dermatologista</td>
+        <td class="num vol">90.500</td>
+        <td class="num">90.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,86</td>
+        <td>MEDIUM</td>
+        <td class="num">38</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-17.7%</td>
+        <td class="m">90.500</td><td class="m">90.500</td><td class="m">90.500</td><td class="m">74.000</td><td class="m">90.500</td><td class="m">90.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que é dermatologia</td>
+        <td class="num vol">1.900</td>
+        <td class="num">1.900</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,76</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">1.900</td><td class="m">1.900</td><td class="m">1.600</td><td class="m">1.600</td><td class="m">1.600</td><td class="m">1.900</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que faz o dermatologista</td>
+        <td class="num vol">2.900</td>
+        <td class="num">2.900</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,49</td>
+        <td>LOW</td>
+        <td class="num">4</td>
+        <td class="num up">+20.8%</td>
+        <td class="num down">-19.4%</td>
+        <td class="m">2.900</td><td class="m">2.900</td><td class="m">2.900</td><td class="m">2.400</td><td class="m">2.900</td><td class="m">2.900</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quando procurar dermatologista</td>
+        <td class="num vol">20</td>
+        <td class="num">20</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,31</td>
+        <td>LOW</td>
+        <td class="num">7</td>
+        <td class="num up">+100.0%</td>
+        <td class="num down">-33.3%</td>
+        <td class="m">30</td><td class="m">20</td><td class="m">30</td><td class="m">20</td><td class="m">30</td><td class="m">20</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">dermatologista perto de mim</td>
+        <td class="num vol">8.100</td>
+        <td class="num">9.900</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,05</td>
+        <td>HIGH</td>
+        <td class="num">77</td>
+        <td class="num up">+22.2%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">9.900</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">9.900</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">biopsia de pele</td>
+        <td class="num vol">2.900</td>
+        <td class="num">2.900</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,14</td>
+        <td>LOW</td>
+        <td class="num">17</td>
+        <td class="num up">+20.8%</td>
+        <td class="num down">-19.4%</td>
+        <td class="m">3.600</td><td class="m">2.900</td><td class="m">2.900</td><td class="m">2.400</td><td class="m">2.400</td><td class="m">2.900</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">consulta dermatologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quanto custa consulta dermatologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">dermatologista particular</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">dermatite</td>
+        <td class="num vol">165.000</td>
+        <td class="num">165.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,35</td>
+        <td>LOW</td>
+        <td class="num">3</td>
+        <td class="num up">+22.2%</td>
+        <td class="num down">-17.9%</td>
+        <td class="m">165.000</td><td class="m">165.000</td><td class="m">165.000</td><td class="m">165.000</td><td class="m">165.000</td><td class="m">165.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">alopecia</td>
+        <td class="num vol">135.000</td>
+        <td class="num">135.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,45</td>
+        <td>LOW</td>
+        <td class="num">8</td>
+        <td class="num down">-18.2%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">165.000</td><td class="m">165.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">psoriase</td>
+        <td class="num vol">74.000</td>
+        <td class="num">74.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,29</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num up">+22.3%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">90.500</td><td class="m">90.500</td><td class="m">74.000</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">74.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">micose</td>
+        <td class="num vol">74.000</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,13</td>
+        <td>LOW</td>
+        <td class="num">1</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">74.000</td><td class="m">74.000</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">rosacea</td>
+        <td class="num vol">74.000</td>
+        <td class="num">74.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,17</td>
+        <td>LOW</td>
+        <td class="num">9</td>
+        <td class="num up">+49.5%</td>
+        <td class="num down">-32.7%</td>
+        <td class="m">60.500</td><td class="m">74.000</td><td class="m">74.000</td><td class="m">90.500</td><td class="m">90.500</td><td class="m">74.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">melasma</td>
+        <td class="num vol">60.500</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,31</td>
+        <td>LOW</td>
+        <td class="num">33</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">74.000</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">49.500</td><td class="m">74.000</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">verruga</td>
+        <td class="num vol">49.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,16</td>
+        <td>LOW</td>
+        <td class="num">11</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">40.500</td><td class="m">40.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">acne</td>
+        <td class="num vol">40.500</td>
+        <td class="num">33.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,20</td>
+        <td>LOW</td>
+        <td class="num">25</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.3%</td>
+        <td class="m">40.500</td><td class="m">40.500</td><td class="m">40.500</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">queda de cabelo</td>
+        <td class="num vol">22.200</td>
+        <td class="num">18.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,52</td>
+        <td>HIGH</td>
+        <td class="num">98</td>
+        <td class="num down">-33.2%</td>
+        <td class="num down">-18.5%</td>
+        <td class="m">33.100</td><td class="m">27.100</td><td class="m">22.200</td><td class="m">18.100</td><td class="m">18.100</td><td class="m">18.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">manchas na pele</td>
+        <td class="num vol">18.100</td>
+        <td class="num">12.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,37</td>
+        <td>LOW</td>
+        <td class="num">6</td>
+        <td class="num down">-33.1%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">18.100</td><td class="m">14.800</td><td class="m">12.100</td><td class="m">12.100</td><td class="m">12.100</td><td class="m">12.100</td>
+      </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="panel" id="panel-endocrinologista" role="tabpanel" hidden>
+      <div class="panel-head">
+        <h2>Tema: Endocrinologista</h2>
+        <p>1 especialidade + 8 diretas + 10 indiretas · 16/19 com volume</p>
+      </div>
+
+      <div class="grid">
+        <div class="stat">
+          <div class="label">Volume do tema</div>
+          <div class="value">22.200</div>
+        </div>
+        <div class="stat">
+          <div class="label">Diretas</div>
+          <div class="value">8</div>
+        </div>
+        <div class="stat">
+          <div class="label">Indiretas</div>
+          <div class="value">10</div>
+        </div>
+        <div class="stat">
+          <div class="label">Com volume</div>
+          <div class="value">16/19</div>
+        </div>
+      </div>
+
+      <h3 class="subh">Maiores volumes</h3>
+      <div class="chips"><div class="chip"><strong>74.000</strong><span>diabetes</span></div><div class="chip"><strong>74.000</strong><span>diabetes tipo 2</span></div><div class="chip"><strong>60.500</strong><span>diabetes mellitus</span></div><div class="chip"><strong>60.500</strong><span>hipertireoidismo</span></div><div class="chip"><strong>40.500</strong><span>resistencia a insulina</span></div></div>
+
+      <div class="lists">
+        <div class="list-card">
+          <h3>Palavras diretas</h3>
+          <ol><li>o que é endocrinologia <span class='v'>(9.900/mês)</span></li><li>o que faz o endocrinologista <span class='v'>(14.800/mês)</span></li><li>medico endocrinologista <span class='v'>(12.100/mês)</span></li><li>endocrinologista perto de mim <span class='v'>(2.900/mês)</span></li><li>endocrinologia <span class='v'>(14.800/mês)</span></li><li>quando procurar um endocrinologista <span class='v'>(—/mês)</span></li><li>consulta endocrinologista <span class='v'>(—/mês)</span></li><li>quanto custa consulta endocrinologista <span class='v'>(—/mês)</span></li></ol>
+        </div>
+        <div class="list-card">
+          <h3>Palavras indiretas</h3>
+          <ol><li>diabetes <span class='v'>(74.000/mês)</span></li><li>diabetes tipo 2 <span class='v'>(74.000/mês)</span></li><li>diabetes mellitus <span class='v'>(60.500/mês)</span></li><li>hipertireoidismo <span class='v'>(60.500/mês)</span></li><li>resistencia a insulina <span class='v'>(40.500/mês)</span></li><li>bocio <span class='v'>(18.100/mês)</span></li><li>tsh alto <span class='v'>(12.100/mês)</span></li><li>pre diabetes <span class='v'>(9.900/mês)</span></li><li>sindrome metabolica <span class='v'>(9.900/mês)</span></li><li>insulina alta <span class='v'>(9.900/mês)</span></li></ol>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Tabela — volume, CPC, competição e tendência</h3>
+        <p>Volume médio mensal (Google Ads / DataForSEO · Brasil). Δ6m / Δ12m vs. mês mais recente.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Palavra</th>
+                <th>Vol. médio</th>
+                <th>Último mês</th>
+                <th>Ref.</th>
+                <th>CPC</th>
+                <th>Competição</th>
+                <th>Idx</th>
+                <th>Δ 6m</th>
+                <th>Δ 12m</th>
+                <th>2026-03</th><th>2026-04</th><th>2026-05</th><th>2026-06</th><th>2026-07</th><th>2026-08</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+      <tr>
+        <td><span class="badge tema">tema</span></td>
+        <td class="kw">endocrinologista<div class="match">via: endocrino</div></td>
+        <td class="num vol">22.200</td>
+        <td class="num">22.200</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,09</td>
+        <td>LOW</td>
+        <td class="num">18</td>
+        <td class="num up">+22.7%</td>
+        <td class="num up">+22.7%</td>
+        <td class="m">27.100</td><td class="m">22.200</td><td class="m">22.200</td><td class="m">18.100</td><td class="m">22.200</td><td class="m">22.200</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que é endocrinologia</td>
+        <td class="num vol">9.900</td>
+        <td class="num">12.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,38</td>
+        <td>LOW</td>
+        <td class="num">3</td>
+        <td class="num up">+22.2%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">12.100</td><td class="m">12.100</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">12.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que faz o endocrinologista</td>
+        <td class="num vol">14.800</td>
+        <td class="num">12.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,40</td>
+        <td>LOW</td>
+        <td class="num">8</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">14.800</td><td class="m">14.800</td><td class="m">12.100</td><td class="m">12.100</td><td class="m">12.100</td><td class="m">12.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">medico endocrinologista</td>
+        <td class="num vol">12.100</td>
+        <td class="num">12.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,97</td>
+        <td>MEDIUM</td>
+        <td class="num">41</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">12.100</td><td class="m">12.100</td><td class="m">12.100</td><td class="m">9.900</td><td class="m">12.100</td><td class="m">12.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">endocrinologista perto de mim</td>
+        <td class="num vol">2.900</td>
+        <td class="num">3.600</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,20</td>
+        <td>HIGH</td>
+        <td class="num">90</td>
+        <td class="num up">+50.0%</td>
+        <td class="num up">+24.1%</td>
+        <td class="m">3.600</td><td class="m">2.900</td><td class="m">2.900</td><td class="m">2.400</td><td class="m">2.900</td><td class="m">3.600</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">endocrinologia</td>
+        <td class="num vol">14.800</td>
+        <td class="num">14.800</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,09</td>
+        <td>LOW</td>
+        <td class="num">20</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">18.100</td><td class="m">18.100</td><td class="m">14.800</td><td class="m">14.800</td><td class="m">14.800</td><td class="m">14.800</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quando procurar um endocrinologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">consulta endocrinologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quanto custa consulta endocrinologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">diabetes</td>
+        <td class="num vol">74.000</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,79</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">90.500</td><td class="m">74.000</td><td class="m">74.000</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">diabetes tipo 2</td>
+        <td class="num vol">74.000</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,92</td>
+        <td>LOW</td>
+        <td class="num">8</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-55.2%</td>
+        <td class="m">74.000</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">diabetes mellitus</td>
+        <td class="num vol">60.500</td>
+        <td class="num">74.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,16</td>
+        <td>LOW</td>
+        <td class="num">12</td>
+        <td class="num up">+49.5%</td>
+        <td class="num up">+49.5%</td>
+        <td class="m">60.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">74.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">hipertireoidismo</td>
+        <td class="num vol">60.500</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,15</td>
+        <td>LOW</td>
+        <td class="num">4</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">74.000</td><td class="m">74.000</td><td class="m">60.500</td><td class="m">49.500</td><td class="m">60.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">resistencia a insulina</td>
+        <td class="num vol">40.500</td>
+        <td class="num">40.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,20</td>
+        <td>LOW</td>
+        <td class="num">4</td>
+        <td class="num up">+22.4%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">40.500</td><td class="m">40.500</td><td class="m">40.500</td><td class="m">40.500</td><td class="m">40.500</td><td class="m">40.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">bocio</td>
+        <td class="num vol">18.100</td>
+        <td class="num">18.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,01</td>
+        <td>LOW</td>
+        <td class="num">0</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">27.100</td><td class="m">22.200</td><td class="m">18.100</td><td class="m">14.800</td><td class="m">14.800</td><td class="m">18.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">tsh alto</td>
+        <td class="num vol">12.100</td>
+        <td class="num">12.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,13</td>
+        <td>LOW</td>
+        <td class="num">4</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">14.800</td><td class="m">12.100</td><td class="m">12.100</td><td class="m">9.900</td><td class="m">12.100</td><td class="m">12.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">pre diabetes</td>
+        <td class="num vol">9.900</td>
+        <td class="num">14.800</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,21</td>
+        <td>LOW</td>
+        <td class="num">9</td>
+        <td class="num up">+49.5%</td>
+        <td class="num up">+49.5%</td>
+        <td class="m">9.900</td><td class="m">12.100</td><td class="m">14.800</td><td class="m">12.100</td><td class="m">12.100</td><td class="m">14.800</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">sindrome metabolica</td>
+        <td class="num vol">9.900</td>
+        <td class="num">8.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,09</td>
+        <td>LOW</td>
+        <td class="num">3</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">12.100</td><td class="m">9.900</td><td class="m">12.100</td><td class="m">8.100</td><td class="m">6.600</td><td class="m">8.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">insulina alta</td>
+        <td class="num vol">9.900</td>
+        <td class="num">8.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,35</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num down">-18.2%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">9.900</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">8.100</td>
+      </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="panel" id="panel-ginecologista" role="tabpanel" hidden>
+      <div class="panel-head">
+        <h2>Tema: Ginecologista</h2>
+        <p>1 especialidade + 8 diretas + 10 indiretas · 14/19 com volume</p>
+      </div>
+
+      <div class="grid">
+        <div class="stat">
+          <div class="label">Volume do tema</div>
+          <div class="value">9.900</div>
+        </div>
+        <div class="stat">
+          <div class="label">Diretas</div>
+          <div class="value">8</div>
+        </div>
+        <div class="stat">
+          <div class="label">Indiretas</div>
+          <div class="value">10</div>
+        </div>
+        <div class="stat">
+          <div class="label">Com volume</div>
+          <div class="value">14/19</div>
+        </div>
+      </div>
+
+      <h3 class="subh">Maiores volumes</h3>
+      <div class="chips"><div class="chip"><strong>368.000</strong><span>candidiase</span></div><div class="chip"><strong>246.000</strong><span>hpv</span></div><div class="chip"><strong>110.000</strong><span>diu</span></div><div class="chip"><strong>60.500</strong><span>sop</span></div><div class="chip"><strong>49.500</strong><span>papanicolau</span></div></div>
+
+      <div class="lists">
+        <div class="list-card">
+          <h3>Palavras diretas</h3>
+          <ol><li>o que é ginecologia <span class='v'>(880/mês)</span></li><li>obstetra <span class='v'>(27.100/mês)</span></li><li>ginecologia <span class='v'>(9.900/mês)</span></li><li>primeira consulta ginecologista <span class='v'>(—/mês)</span></li><li>quando procurar um ginecologista <span class='v'>(—/mês)</span></li><li>consulta ginecologista <span class='v'>(—/mês)</span></li><li>quanto custa consulta ginecologista <span class='v'>(—/mês)</span></li><li>ginecologista particular <span class='v'>(—/mês)</span></li></ol>
+        </div>
+        <div class="list-card">
+          <h3>Palavras indiretas</h3>
+          <ol><li>candidiase <span class='v'>(368.000/mês)</span></li><li>hpv <span class='v'>(246.000/mês)</span></li><li>diu <span class='v'>(110.000/mês)</span></li><li>sop <span class='v'>(60.500/mês)</span></li><li>papanicolau <span class='v'>(49.500/mês)</span></li><li>menopausa <span class='v'>(49.500/mês)</span></li><li>tpm <span class='v'>(49.500/mês)</span></li><li>dismenorreia <span class='v'>(40.500/mês)</span></li><li>planejamento familiar <span class='v'>(5.400/mês)</span></li><li>ovario policistico <span class='v'>(4.400/mês)</span></li></ol>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Tabela — volume, CPC, competição e tendência</h3>
+        <p>Volume médio mensal (Google Ads / DataForSEO · Brasil). Δ6m / Δ12m vs. mês mais recente.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Palavra</th>
+                <th>Vol. médio</th>
+                <th>Último mês</th>
+                <th>Ref.</th>
+                <th>CPC</th>
+                <th>Competição</th>
+                <th>Idx</th>
+                <th>Δ 6m</th>
+                <th>Δ 12m</th>
+                <th>2026-03</th><th>2026-04</th><th>2026-05</th><th>2026-06</th><th>2026-07</th><th>2026-08</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+      <tr>
+        <td><span class="badge tema">tema</span></td>
+        <td class="kw">ginecologista<div class="match">via: ginecologia</div></td>
+        <td class="num vol">9.900</td>
+        <td class="num">9.900</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,00</td>
+        <td>LOW</td>
+        <td class="num">17</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">12.100</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">9.900</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que é ginecologia</td>
+        <td class="num vol">880</td>
+        <td class="num">880</td>
+        <td class="muted">2026-08</td>
+        <td class="num">—</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num down">-12.0%</td>
+        <td class="num down">-12.0%</td>
+        <td class="m">1.000</td><td class="m">880</td><td class="m">1.000</td><td class="m">880</td><td class="m">1.000</td><td class="m">880</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">obstetra</td>
+        <td class="num vol">27.100</td>
+        <td class="num">27.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,98</td>
+        <td>LOW</td>
+        <td class="num">12</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.1%</td>
+        <td class="m">33.100</td><td class="m">27.100</td><td class="m">27.100</td><td class="m">27.100</td><td class="m">27.100</td><td class="m">27.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">ginecologia</td>
+        <td class="num vol">9.900</td>
+        <td class="num">9.900</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,00</td>
+        <td>LOW</td>
+        <td class="num">17</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">12.100</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">9.900</td><td class="m">9.900</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">primeira consulta ginecologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quando procurar um ginecologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">consulta ginecologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quanto custa consulta ginecologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">ginecologista particular</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">candidiase</td>
+        <td class="num vol">368.000</td>
+        <td class="num">301.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,16</td>
+        <td>LOW</td>
+        <td class="num">7</td>
+        <td class="num down">-18.2%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">368.000</td><td class="m">450.000</td><td class="m">368.000</td><td class="m">368.000</td><td class="m">368.000</td><td class="m">301.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">hpv</td>
+        <td class="num vol">246.000</td>
+        <td class="num">246.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,54</td>
+        <td>LOW</td>
+        <td class="num">7</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">246.000</td><td class="m">246.000</td><td class="m">246.000</td><td class="m">201.000</td><td class="m">201.000</td><td class="m">246.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">diu</td>
+        <td class="num vol">110.000</td>
+        <td class="num">110.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,25</td>
+        <td>LOW</td>
+        <td class="num">24</td>
+        <td class="num up">+21.5%</td>
+        <td class="num down">-18.5%</td>
+        <td class="m">110.000</td><td class="m">90.500</td><td class="m">110.000</td><td class="m">90.500</td><td class="m">110.000</td><td class="m">110.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">sop</td>
+        <td class="num vol">60.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,22</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num down">-18.2%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">papanicolau</td>
+        <td class="num vol">49.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,84</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num up">+22.2%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">60.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">40.500</td><td class="m">40.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">menopausa</td>
+        <td class="num vol">49.500</td>
+        <td class="num">40.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,31</td>
+        <td>LOW</td>
+        <td class="num">13</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-45.3%</td>
+        <td class="m">49.500</td><td class="m">49.500</td><td class="m">40.500</td><td class="m">33.100</td><td class="m">40.500</td><td class="m">40.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">tpm</td>
+        <td class="num vol">49.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,48</td>
+        <td>LOW</td>
+        <td class="num">1</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">60.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">40.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">dismenorreia</td>
+        <td class="num vol">40.500</td>
+        <td class="num">40.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,68</td>
+        <td>LOW</td>
+        <td class="num">0</td>
+        <td class="num up">+22.4%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">40.500</td><td class="m">60.500</td><td class="m">40.500</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">40.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">planejamento familiar</td>
+        <td class="num vol">5.400</td>
+        <td class="num">5.400</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,66</td>
+        <td>LOW</td>
+        <td class="num">1</td>
+        <td class="num up">+22.7%</td>
+        <td class="num down">-33.3%</td>
+        <td class="m">6.600</td><td class="m">5.400</td><td class="m">5.400</td><td class="m">4.400</td><td class="m">3.600</td><td class="m">5.400</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">ovario policistico</td>
+        <td class="num vol">4.400</td>
+        <td class="num">4.400</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,03</td>
+        <td>LOW</td>
+        <td class="num">6</td>
+        <td class="num up">+22.2%</td>
+        <td class="num down">-18.5%</td>
+        <td class="m">4.400</td><td class="m">4.400</td><td class="m">4.400</td><td class="m">3.600</td><td class="m">3.600</td><td class="m">4.400</td>
+      </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="panel" id="panel-oftalmologista" role="tabpanel" hidden>
+      <div class="panel-head">
+        <h2>Tema: Oftalmologista</h2>
+        <p>1 especialidade + 8 diretas + 10 indiretas · 17/19 com volume</p>
+      </div>
+
+      <div class="grid">
+        <div class="stat">
+          <div class="label">Volume do tema</div>
+          <div class="value">201.000</div>
+        </div>
+        <div class="stat">
+          <div class="label">Diretas</div>
+          <div class="value">8</div>
+        </div>
+        <div class="stat">
+          <div class="label">Indiretas</div>
+          <div class="value">10</div>
+        </div>
+        <div class="stat">
+          <div class="label">Com volume</div>
+          <div class="value">17/19</div>
+        </div>
+      </div>
+
+      <h3 class="subh">Maiores volumes</h3>
+      <div class="chips"><div class="chip"><strong>201.000</strong><span>oftalmologista</span></div><div class="chip"><strong>201.000</strong><span>conjuntivite</span></div><div class="chip"><strong>135.000</strong><span>astigmatismo</span></div><div class="chip"><strong>90.500</strong><span>lentes de contato</span></div><div class="chip"><strong>74.000</strong><span>oculos de grau</span></div></div>
+
+      <div class="lists">
+        <div class="list-card">
+          <h3>Palavras diretas</h3>
+          <ol><li>o que é oftalmologia <span class='v'>(3.600/mês)</span></li><li>o que faz o oftalmologista <span class='v'>(1.000/mês)</span></li><li>consulta oftalmologista <span class='v'>(4.400/mês)</span></li><li>exame de vista <span class='v'>(27.100/mês)</span></li><li>valor consulta oftalmologista <span class='v'>(590/mês)</span></li><li>melhor oftalmologista <span class='v'>(170/mês)</span></li><li>quando procurar um oftalmologista <span class='v'>(—/mês)</span></li><li>oftalmologista particular <span class='v'>(—/mês)</span></li></ol>
+        </div>
+        <div class="list-card">
+          <h3>Palavras indiretas</h3>
+          <ol><li>conjuntivite <span class='v'>(201.000/mês)</span></li><li>astigmatismo <span class='v'>(135.000/mês)</span></li><li>lentes de contato <span class='v'>(90.500/mês)</span></li><li>oculos de grau <span class='v'>(74.000/mês)</span></li><li>miopia <span class='v'>(49.500/mês)</span></li><li>estrabismo <span class='v'>(49.500/mês)</span></li><li>daltonismo <span class='v'>(27.100/mês)</span></li><li>olho seco <span class='v'>(5.400/mês)</span></li><li>pterigio <span class='v'>(18.100/mês)</span></li><li>fundo de olho <span class='v'>(1.900/mês)</span></li></ol>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Tabela — volume, CPC, competição e tendência</h3>
+        <p>Volume médio mensal (Google Ads / DataForSEO · Brasil). Δ6m / Δ12m vs. mês mais recente.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Palavra</th>
+                <th>Vol. médio</th>
+                <th>Último mês</th>
+                <th>Ref.</th>
+                <th>CPC</th>
+                <th>Competição</th>
+                <th>Idx</th>
+                <th>Δ 6m</th>
+                <th>Δ 12m</th>
+                <th>2026-03</th><th>2026-04</th><th>2026-05</th><th>2026-06</th><th>2026-07</th><th>2026-08</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+      <tr>
+        <td><span class="badge tema">tema</span></td>
+        <td class="kw">oftalmologista</td>
+        <td class="num vol">201.000</td>
+        <td class="num">201.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,81</td>
+        <td>MEDIUM</td>
+        <td class="num">35</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.3%</td>
+        <td class="m">201.000</td><td class="m">201.000</td><td class="m">201.000</td><td class="m">165.000</td><td class="m">201.000</td><td class="m">201.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que é oftalmologia</td>
+        <td class="num vol">3.600</td>
+        <td class="num">3.600</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,74</td>
+        <td>LOW</td>
+        <td class="num">3</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">4.400</td><td class="m">3.600</td><td class="m">3.600</td><td class="m">3.600</td><td class="m">4.400</td><td class="m">3.600</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que faz o oftalmologista</td>
+        <td class="num vol">1.000</td>
+        <td class="num">880</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,85</td>
+        <td>LOW</td>
+        <td class="num">3</td>
+        <td class="num down">-12.0%</td>
+        <td class="num down">-12.0%</td>
+        <td class="m">1.300</td><td class="m">1.000</td><td class="m">1.000</td><td class="m">880</td><td class="m">880</td><td class="m">880</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">consulta oftalmologista</td>
+        <td class="num vol">4.400</td>
+        <td class="num">4.400</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,24</td>
+        <td>HIGH</td>
+        <td class="num">71</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">4.400</td><td class="m">4.400</td><td class="m">4.400</td><td class="m">3.600</td><td class="m">4.400</td><td class="m">4.400</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">exame de vista</td>
+        <td class="num vol">27.100</td>
+        <td class="num">27.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,00</td>
+        <td>MEDIUM</td>
+        <td class="num">55</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">33.100</td><td class="m">27.100</td><td class="m">27.100</td><td class="m">22.200</td><td class="m">27.100</td><td class="m">27.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">valor consulta oftalmologista</td>
+        <td class="num vol">590</td>
+        <td class="num">590</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,01</td>
+        <td>MEDIUM</td>
+        <td class="num">52</td>
+        <td class="num up">+22.9%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">590</td><td class="m">590</td><td class="m">590</td><td class="m">480</td><td class="m">480</td><td class="m">590</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">melhor oftalmologista</td>
+        <td class="num vol">170</td>
+        <td class="num">170</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,91</td>
+        <td>MEDIUM</td>
+        <td class="num">35</td>
+        <td class="num up">+21.4%</td>
+        <td class="num up">+21.4%</td>
+        <td class="m">260</td><td class="m">170</td><td class="m">170</td><td class="m">140</td><td class="m">170</td><td class="m">170</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quando procurar um oftalmologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">oftalmologista particular</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">conjuntivite</td>
+        <td class="num vol">201.000</td>
+        <td class="num">201.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,17</td>
+        <td>LOW</td>
+        <td class="num">1</td>
+        <td class="num up">+21.8%</td>
+        <td class="num down">-18.3%</td>
+        <td class="m">201.000</td><td class="m">201.000</td><td class="m">201.000</td><td class="m">201.000</td><td class="m">201.000</td><td class="m">201.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">astigmatismo</td>
+        <td class="num vol">135.000</td>
+        <td class="num">135.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,20</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num up">+22.7%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">lentes de contato</td>
+        <td class="num vol">90.500</td>
+        <td class="num">90.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 2,05</td>
+        <td>HIGH</td>
+        <td class="num">100</td>
+        <td class="num up">+22.3%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">90.500</td><td class="m">74.000</td><td class="m">74.000</td><td class="m">74.000</td><td class="m">90.500</td><td class="m">90.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">oculos de grau</td>
+        <td class="num vol">74.000</td>
+        <td class="num">74.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,41</td>
+        <td>HIGH</td>
+        <td class="num">100</td>
+        <td class="num up">+22.3%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">74.000</td><td class="m">74.000</td><td class="m">74.000</td><td class="m">60.500</td><td class="m">74.000</td><td class="m">74.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">miopia</td>
+        <td class="num vol">49.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,33</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num up">+22.2%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">40.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">estrabismo</td>
+        <td class="num vol">49.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,73</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">60.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">daltonismo</td>
+        <td class="num vol">27.100</td>
+        <td class="num">27.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,08</td>
+        <td>LOW</td>
+        <td class="num">0</td>
+        <td class="num up">+49.7%</td>
+        <td class="num down">-18.1%</td>
+        <td class="m">22.200</td><td class="m">22.200</td><td class="m">27.100</td><td class="m">22.200</td><td class="m">22.200</td><td class="m">27.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">olho seco</td>
+        <td class="num vol">5.400</td>
+        <td class="num">5.400</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,74</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num up">+22.7%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">5.400</td><td class="m">5.400</td><td class="m">5.400</td><td class="m">4.400</td><td class="m">5.400</td><td class="m">5.400</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">pterigio</td>
+        <td class="num vol">18.100</td>
+        <td class="num">18.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,78</td>
+        <td>LOW</td>
+        <td class="num">1</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">22.200</td><td class="m">18.100</td><td class="m">18.100</td><td class="m">18.100</td><td class="m">22.200</td><td class="m">18.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">fundo de olho</td>
+        <td class="num vol">1.900</td>
+        <td class="num">1.900</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,64</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num up">+18.8%</td>
+        <td class="num down">-20.8%</td>
+        <td class="m">2.900</td><td class="m">2.400</td><td class="m">2.400</td><td class="m">1.900</td><td class="m">1.900</td><td class="m">1.900</td>
+      </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+
+    <footer>
+      Navegue pela aba <strong>Início</strong> ou pelas especialidades. Padrão: 1 tema + 3–10 diretas + 3–10 indiretas. Termos Unimed excluídos.
+    </footer>
+  </div>
+
+  <script>
+    function activate(key) {
+      document.querySelectorAll('.tab').forEach(btn => {
+        const on = btn.dataset.target === key;
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      document.querySelectorAll('.panel').forEach(panel => {
+        panel.hidden = panel.id !== 'panel-' + key;
+      });
+      const el = document.getElementById('panel-' + key);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => activate(btn.dataset.target));
+    });
+    document.querySelectorAll('.overview-card').forEach(btn => {
+      btn.addEventListener('click', () => activate(btn.dataset.target));
+    });
+
+    // start on home navigation
+    activate('home');
+  </script>
+</body>
+</html>
