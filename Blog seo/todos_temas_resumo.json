@@ -1,0 +1,407 @@
+[
+  {
+    "tema": "cardiologista",
+    "volume_tema": 33100,
+    "volume_via": null,
+    "diretas": [
+      {
+        "keyword": "o que é cardiologia",
+        "volume": 480
+      },
+      {
+        "keyword": "o que faz o cardiologista",
+        "volume": 1300
+      },
+      {
+        "keyword": "quanto custa consulta cardiologista",
+        "volume": 170
+      },
+      {
+        "keyword": "marcar consulta cardiologista",
+        "volume": 30
+      },
+      {
+        "keyword": "medico do coracao",
+        "volume": 1600
+      },
+      {
+        "keyword": "cardiologista esportivo",
+        "volume": 590
+      },
+      {
+        "keyword": "quando procurar um cardiologista",
+        "volume": null
+      },
+      {
+        "keyword": "consulta cardiologista",
+        "volume": null
+      }
+    ],
+    "indiretas": [
+      {
+        "keyword": "eletrocardiograma",
+        "volume": 135000
+      },
+      {
+        "keyword": "pressao alta",
+        "volume": 110000
+      },
+      {
+        "keyword": "dor no peito",
+        "volume": 60500
+      },
+      {
+        "keyword": "infarto",
+        "volume": 60500
+      },
+      {
+        "keyword": "teste ergometrico",
+        "volume": 60500
+      },
+      {
+        "keyword": "colesterol alto",
+        "volume": 49500
+      },
+      {
+        "keyword": "angina",
+        "volume": 33100
+      },
+      {
+        "keyword": "holter 24 horas",
+        "volume": 33100
+      },
+      {
+        "keyword": "palpitação",
+        "volume": 6600
+      },
+      {
+        "keyword": "fibrilacao atrial",
+        "volume": 6600
+      }
+    ]
+  },
+  {
+    "tema": "dermatologista",
+    "volume_tema": 90500,
+    "volume_via": null,
+    "diretas": [
+      {
+        "keyword": "o que é dermatologia",
+        "volume": 1900
+      },
+      {
+        "keyword": "o que faz o dermatologista",
+        "volume": 2900
+      },
+      {
+        "keyword": "quando procurar dermatologista",
+        "volume": 20
+      },
+      {
+        "keyword": "dermatologista perto de mim",
+        "volume": 8100
+      },
+      {
+        "keyword": "biopsia de pele",
+        "volume": 2900
+      },
+      {
+        "keyword": "consulta dermatologista",
+        "volume": null
+      },
+      {
+        "keyword": "quanto custa consulta dermatologista",
+        "volume": null
+      },
+      {
+        "keyword": "dermatologista particular",
+        "volume": null
+      }
+    ],
+    "indiretas": [
+      {
+        "keyword": "dermatite",
+        "volume": 165000
+      },
+      {
+        "keyword": "alopecia",
+        "volume": 135000
+      },
+      {
+        "keyword": "psoriase",
+        "volume": 74000
+      },
+      {
+        "keyword": "micose",
+        "volume": 74000
+      },
+      {
+        "keyword": "rosacea",
+        "volume": 74000
+      },
+      {
+        "keyword": "melasma",
+        "volume": 60500
+      },
+      {
+        "keyword": "verruga",
+        "volume": 49500
+      },
+      {
+        "keyword": "acne",
+        "volume": 40500
+      },
+      {
+        "keyword": "queda de cabelo",
+        "volume": 22200
+      },
+      {
+        "keyword": "manchas na pele",
+        "volume": 18100
+      }
+    ]
+  },
+  {
+    "tema": "endocrinologista",
+    "volume_tema": 22200,
+    "volume_via": "endocrino",
+    "diretas": [
+      {
+        "keyword": "o que é endocrinologia",
+        "volume": 9900
+      },
+      {
+        "keyword": "o que faz o endocrinologista",
+        "volume": 14800
+      },
+      {
+        "keyword": "medico endocrinologista",
+        "volume": 12100
+      },
+      {
+        "keyword": "endocrinologista perto de mim",
+        "volume": 2900
+      },
+      {
+        "keyword": "endocrinologia",
+        "volume": 14800
+      },
+      {
+        "keyword": "quando procurar um endocrinologista",
+        "volume": null
+      },
+      {
+        "keyword": "consulta endocrinologista",
+        "volume": null
+      },
+      {
+        "keyword": "quanto custa consulta endocrinologista",
+        "volume": null
+      }
+    ],
+    "indiretas": [
+      {
+        "keyword": "diabetes",
+        "volume": 74000
+      },
+      {
+        "keyword": "diabetes tipo 2",
+        "volume": 74000
+      },
+      {
+        "keyword": "diabetes mellitus",
+        "volume": 60500
+      },
+      {
+        "keyword": "hipertireoidismo",
+        "volume": 60500
+      },
+      {
+        "keyword": "resistencia a insulina",
+        "volume": 40500
+      },
+      {
+        "keyword": "bocio",
+        "volume": 18100
+      },
+      {
+        "keyword": "tsh alto",
+        "volume": 12100
+      },
+      {
+        "keyword": "pre diabetes",
+        "volume": 9900
+      },
+      {
+        "keyword": "sindrome metabolica",
+        "volume": 9900
+      },
+      {
+        "keyword": "insulina alta",
+        "volume": 9900
+      }
+    ]
+  },
+  {
+    "tema": "ginecologista",
+    "volume_tema": 9900,
+    "volume_via": "ginecologia",
+    "diretas": [
+      {
+        "keyword": "o que é ginecologia",
+        "volume": 880
+      },
+      {
+        "keyword": "obstetra",
+        "volume": 27100
+      },
+      {
+        "keyword": "ginecologia",
+        "volume": 9900
+      },
+      {
+        "keyword": "primeira consulta ginecologista",
+        "volume": null
+      },
+      {
+        "keyword": "quando procurar um ginecologista",
+        "volume": null
+      },
+      {
+        "keyword": "consulta ginecologista",
+        "volume": null
+      },
+      {
+        "keyword": "quanto custa consulta ginecologista",
+        "volume": null
+      },
+      {
+        "keyword": "ginecologista particular",
+        "volume": null
+      }
+    ],
+    "indiretas": [
+      {
+        "keyword": "candidiase",
+        "volume": 368000
+      },
+      {
+        "keyword": "hpv",
+        "volume": 246000
+      },
+      {
+        "keyword": "diu",
+        "volume": 110000
+      },
+      {
+        "keyword": "sop",
+        "volume": 60500
+      },
+      {
+        "keyword": "papanicolau",
+        "volume": 49500
+      },
+      {
+        "keyword": "menopausa",
+        "volume": 49500
+      },
+      {
+        "keyword": "tpm",
+        "volume": 49500
+      },
+      {
+        "keyword": "dismenorreia",
+        "volume": 40500
+      },
+      {
+        "keyword": "planejamento familiar",
+        "volume": 5400
+      },
+      {
+        "keyword": "ovario policistico",
+        "volume": 4400
+      }
+    ]
+  },
+  {
+    "tema": "oftalmologista",
+    "volume_tema": 201000,
+    "volume_via": null,
+    "diretas": [
+      {
+        "keyword": "o que é oftalmologia",
+        "volume": 3600
+      },
+      {
+        "keyword": "o que faz o oftalmologista",
+        "volume": 1000
+      },
+      {
+        "keyword": "consulta oftalmologista",
+        "volume": 4400
+      },
+      {
+        "keyword": "exame de vista",
+        "volume": 27100
+      },
+      {
+        "keyword": "valor consulta oftalmologista",
+        "volume": 590
+      },
+      {
+        "keyword": "melhor oftalmologista",
+        "volume": 170
+      },
+      {
+        "keyword": "quando procurar um oftalmologista",
+        "volume": null
+      },
+      {
+        "keyword": "oftalmologista particular",
+        "volume": null
+      }
+    ],
+    "indiretas": [
+      {
+        "keyword": "conjuntivite",
+        "volume": 201000
+      },
+      {
+        "keyword": "astigmatismo",
+        "volume": 135000
+      },
+      {
+        "keyword": "lentes de contato",
+        "volume": 90500
+      },
+      {
+        "keyword": "oculos de grau",
+        "volume": 74000
+      },
+      {
+        "keyword": "miopia",
+        "volume": 49500
+      },
+      {
+        "keyword": "estrabismo",
+        "volume": 49500
+      },
+      {
+        "keyword": "daltonismo",
+        "volume": 27100
+      },
+      {
+        "keyword": "olho seco",
+        "volume": 5400
+      },
+      {
+        "keyword": "pterigio",
+        "volume": 18100
+      },
+      {
+        "keyword": "fundo de olho",
+        "volume": 1900
+      }
+    ]
+  }
+]

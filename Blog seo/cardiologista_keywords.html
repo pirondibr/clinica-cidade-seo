@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEO Keywords — Cardiologista | Clínica da Cidade</title>
+  <style>
+    :root {
+      --bg: #f3f6f8;
+      --ink: #14212b;
+      --muted: #5b6b76;
+      --line: #d7e0e6;
+      --card: #ffffff;
+      --tema: #0b6e4f;
+      --direta: #1d4e89;
+      --indireta: #9a3412;
+      --up: #0b6e4f;
+      --down: #b42318;
+      --accent: #0e7c7b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #d7f0ea 0%, transparent 55%),
+        radial-gradient(900px 400px at 100% 0%, #d9e7f5 0%, transparent 50%),
+        var(--bg);
+      line-height: 1.45;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 20px 64px; }
+    header {
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .pill {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .stat .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .stat .value { font-size: 1.6rem; font-weight: 700; margin-top: 4px; }
+    .section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 18px 8px;
+      margin-bottom: 18px;
+      overflow: auto;
+    }
+    .section h2 {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+    }
+    .section p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .chip {
+      background: #eef7f6;
+      border: 1px solid #cfe6e3;
+      border-radius: 12px;
+      padding: 10px 12px;
+      min-width: 140px;
+    }
+    .chip strong { display: block; font-size: 1.1rem; }
+    .chip span { color: var(--muted); font-size: 13px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      min-width: 980px;
+    }
+    th, td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--muted);
+      font-weight: 650;
+      position: sticky;
+      top: 0;
+      background: #fbfcfd;
+    }
+    .kw { font-weight: 600; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .vol { font-weight: 700; }
+    .muted { color: var(--muted); }
+    .m { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: #fff;
+    }
+    .badge.tema { background: var(--tema); }
+    .badge.direta { background: var(--direta); }
+    .badge.indireta { background: var(--indireta); }
+    .up { color: var(--up); font-weight: 650; }
+    .down { color: var(--down); font-weight: 650; }
+    .lists {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 800px) {
+      .lists { grid-template-columns: 1fr; }
+    }
+    .list-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .list-card h3 { margin: 0 0 10px; font-size: 1rem; }
+    .list-card ol, .list-card ul { margin: 0; padding-left: 18px; }
+    .list-card li { margin: 6px 0; }
+    .list-card .v { color: var(--muted); font-size: 13px; }
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Blog SEO · Clínica da Cidade</p>
+      <h1>Rodada 1 — Tema: Cardiologista</h1>
+      <p class="sub">
+        Pesquisa de palavras-chave para <strong>clinicadacidade.com.br</strong>
+        (Brasil), com volume mensal via DataForSEO Google Ads Search Volume.
+      </p>
+      <div class="meta">
+        <span class="pill">Local: Brasil (2076)</span>
+        <span class="pill">Fonte: DataForSEO · Google Ads</span>
+        <span class="pill">Gerado em: 2026-09-29</span>
+        <span class="pill">Último mês nos dados: 2026-08</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="stat">
+        <div class="label">Volume do tema</div>
+        <div class="value">33.100</div>
+      </div>
+      <div class="stat">
+        <div class="label">Palavras diretas</div>
+        <div class="value">8</div>
+      </div>
+      <div class="stat">
+        <div class="label">Palavras indiretas</div>
+        <div class="value">10</div>
+      </div>
+      <div class="stat">
+        <div class="label">Com volume</div>
+        <div class="value">18/19</div>
+      </div>
+    </div>
+
+    <h2 style="margin:0 0 10px;font-size:1rem;">Maiores volumes desta rodada</h2>
+    <div class="chips"><div class="chip"><strong>135.000</strong><span>eletrocardiograma</span></div><div class="chip"><strong>110.000</strong><span>pressao alta</span></div><div class="chip"><strong>60.500</strong><span>dor no peito</span></div><div class="chip"><strong>60.500</strong><span>infarto</span></div><div class="chip"><strong>60.500</strong><span>teste ergometrico</span></div></div>
+
+    <div class="lists">
+      <div class="list-card">
+        <h3>Palavras diretas</h3>
+        <ol>
+          <li>o que é cardiologia <span class='v'>(480/mês)</span></li><li>o que faz o cardiologista <span class='v'>(1.300/mês)</span></li><li>quanto custa consulta cardiologista <span class='v'>(170/mês)</span></li><li>marcar consulta cardiologista <span class='v'>(30/mês)</span></li><li>quando procurar um cardiologista <span class='v'>(—/mês)</span></li><li>cardiologista unimed <span class='v'>(8.100/mês)</span></li><li>medico do coracao <span class='v'>(1.600/mês)</span></li><li>cardiologista esportivo <span class='v'>(590/mês)</span></li>
+        </ol>
+      </div>
+      <div class="list-card">
+        <h3>Palavras indiretas</h3>
+        <ol>
+          <li>pressao alta <span class='v'>(110.000/mês)</span></li><li>eletrocardiograma <span class='v'>(135.000/mês)</span></li><li>dor no peito <span class='v'>(60.500/mês)</span></li><li>infarto <span class='v'>(60.500/mês)</span></li><li>teste ergometrico <span class='v'>(60.500/mês)</span></li><li>colesterol alto <span class='v'>(49.500/mês)</span></li><li>angina <span class='v'>(33.100/mês)</span></li><li>holter 24 horas <span class='v'>(33.100/mês)</span></li><li>palpitação <span class='v'>(6.600/mês)</span></li><li>fibrilacao atrial <span class='v'>(6.600/mês)</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tabela completa — volume, CPC, competição e tendência</h2>
+      <p>Volume médio mensal (Google Ads). Crescimento 6m/12m comparado ao mês mais recente disponível.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Palavra</th>
+            <th>Vol. médio</th>
+            <th>Último mês</th>
+            <th>Ref.</th>
+            <th>CPC</th>
+            <th>Competição</th>
+            <th>Idx</th>
+            <th>Δ 6m</th>
+            <th>Δ 12m</th>
+            <th>2026-03</th><th>2026-04</th><th>2026-05</th><th>2026-06</th><th>2026-07</th><th>2026-08</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td><span class="badge tema">tema</span></td>
+        <td class="kw">cardiologista</td>
+        <td class="num vol">33.100</td>
+        <td class="num">33.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,08</td>
+        <td>MEDIUM</td>
+        <td class="num">34</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.3%</td>
+        <td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que é cardiologia</td>
+        <td class="num vol">480</td>
+        <td class="num">480</td>
+        <td class="muted">2026-08</td>
+        <td class="num">—</td>
+        <td>LOW</td>
+        <td class="num">1</td>
+        <td class="num ">0.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">590</td><td class="m">480</td><td class="m">480</td><td class="m">390</td><td class="m">480</td><td class="m">480</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">o que faz o cardiologista</td>
+        <td class="num vol">1.300</td>
+        <td class="num">1.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 5,99</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num down">-23.1%</td>
+        <td class="num down">-37.5%</td>
+        <td class="m">1.300</td><td class="m">1.300</td><td class="m">1.000</td><td class="m">1.000</td><td class="m">1.000</td><td class="m">1.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quanto custa consulta cardiologista</td>
+        <td class="num vol">170</td>
+        <td class="num">210</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,48</td>
+        <td>MEDIUM</td>
+        <td class="num">39</td>
+        <td class="num up">+23.5%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">170</td><td class="m">170</td><td class="m">210</td><td class="m">170</td><td class="m">210</td><td class="m">210</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">marcar consulta cardiologista</td>
+        <td class="num vol">30</td>
+        <td class="num">40</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,47</td>
+        <td>HIGH</td>
+        <td class="num">90</td>
+        <td class="num up">+33.3%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">30</td><td class="m">40</td><td class="m">30</td><td class="m">40</td><td class="m">20</td><td class="m">40</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">quando procurar um cardiologista</td>
+        <td class="num vol">—</td>
+        <td class="num">—</td>
+        <td class="muted">—</td>
+        <td class="num">—</td>
+        <td>—</td>
+        <td class="num">—</td>
+        <td class="num ">—</td>
+        <td class="num ">—</td>
+        <td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td><td class="m">—</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">cardiologista unimed</td>
+        <td class="num vol">8.100</td>
+        <td class="num">8.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,43</td>
+        <td>LOW</td>
+        <td class="num">16</td>
+        <td class="num up">+22.7%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">8.100</td><td class="m">6.600</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">8.100</td><td class="m">8.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">medico do coracao</td>
+        <td class="num vol">1.600</td>
+        <td class="num">1.600</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,51</td>
+        <td>LOW</td>
+        <td class="num">16</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-15.8%</td>
+        <td class="m">2.400</td><td class="m">1.600</td><td class="m">1.900</td><td class="m">1.600</td><td class="m">1.600</td><td class="m">1.600</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge direta">direta</span></td>
+        <td class="kw">cardiologista esportivo</td>
+        <td class="num vol">590</td>
+        <td class="num">720</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 1,31</td>
+        <td>MEDIUM</td>
+        <td class="num">66</td>
+        <td class="num up">+22.0%</td>
+        <td class="num up">+22.0%</td>
+        <td class="m">720</td><td class="m">720</td><td class="m">720</td><td class="m">720</td><td class="m">720</td><td class="m">720</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">pressao alta</td>
+        <td class="num vol">110.000</td>
+        <td class="num">110.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,40</td>
+        <td>LOW</td>
+        <td class="num">5</td>
+        <td class="num up">+21.5%</td>
+        <td class="num down">-33.3%</td>
+        <td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td><td class="m">110.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">eletrocardiograma</td>
+        <td class="num vol">135.000</td>
+        <td class="num">135.000</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,61</td>
+        <td>LOW</td>
+        <td class="num">8</td>
+        <td class="num up">+22.7%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td><td class="m">135.000</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">dor no peito</td>
+        <td class="num vol">60.500</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,21</td>
+        <td>LOW</td>
+        <td class="num">6</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">74.000</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">infarto</td>
+        <td class="num vol">60.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,29</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">49.500</td><td class="m">74.000</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">teste ergometrico</td>
+        <td class="num vol">60.500</td>
+        <td class="num">60.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,78</td>
+        <td>LOW</td>
+        <td class="num">16</td>
+        <td class="num up">+22.2%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">60.500</td><td class="m">60.500</td><td class="m">60.500</td><td class="m">49.500</td><td class="m">60.500</td><td class="m">60.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">colesterol alto</td>
+        <td class="num vol">49.500</td>
+        <td class="num">49.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,27</td>
+        <td>LOW</td>
+        <td class="num">7</td>
+        <td class="num up">+22.2%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">49.500</td><td class="m">49.500</td><td class="m">49.500</td><td class="m">40.500</td><td class="m">49.500</td><td class="m">49.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">angina</td>
+        <td class="num vol">33.100</td>
+        <td class="num">33.100</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,27</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-33.1%</td>
+        <td class="m">40.500</td><td class="m">40.500</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">27.100</td><td class="m">33.100</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">holter 24 horas</td>
+        <td class="num vol">33.100</td>
+        <td class="num">40.500</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,82</td>
+        <td>LOW</td>
+        <td class="num">9</td>
+        <td class="num up">+22.4%</td>
+        <td class="num up">+22.4%</td>
+        <td class="m">40.500</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">33.100</td><td class="m">40.500</td><td class="m">40.500</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">palpitação</td>
+        <td class="num vol">6.600</td>
+        <td class="num">5.400</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,83</td>
+        <td>LOW</td>
+        <td class="num">2</td>
+        <td class="num ">0.0%</td>
+        <td class="num down">-18.2%</td>
+        <td class="m">6.600</td><td class="m">6.600</td><td class="m">6.600</td><td class="m">5.400</td><td class="m">12.100</td><td class="m">5.400</td>
+      </tr>
+
+      <tr>
+        <td><span class="badge indireta">indireta</span></td>
+        <td class="kw">fibrilacao atrial</td>
+        <td class="num vol">6.600</td>
+        <td class="num">6.600</td>
+        <td class="muted">2026-08</td>
+        <td class="num">R$ 0,09</td>
+        <td>LOW</td>
+        <td class="num">4</td>
+        <td class="num up">+50.0%</td>
+        <td class="num ">0.0%</td>
+        <td class="m">8.100</td><td class="m">8.100</td><td class="m">6.600</td><td class="m">5.400</td><td class="m">3.600</td><td class="m">6.600</td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      Padrão editorial: 1 tema (especialidade) + 3–10 diretas + 3–10 indiretas.
+      Próximos temas: dermatologista, endocrinologista, ginecologista, oftalmologista.
+      Termos sem volume no Google Ads aparecem como "—".
+    </footer>
+  </div>
+</body>
+</html>

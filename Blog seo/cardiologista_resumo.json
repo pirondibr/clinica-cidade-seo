@@ -1,0 +1,238 @@
+{
+  "tema": "cardiologista",
+  "site": "clinicadacidade.com.br",
+  "location": "Brasil (2076)",
+  "diretas": [
+    "o que é cardiologia",
+    "o que faz o cardiologista",
+    "quanto custa consulta cardiologista",
+    "marcar consulta cardiologista",
+    "quando procurar um cardiologista",
+    "cardiologista unimed",
+    "medico do coracao",
+    "cardiologista esportivo"
+  ],
+  "indiretas": [
+    "pressao alta",
+    "eletrocardiograma",
+    "dor no peito",
+    "infarto",
+    "teste ergometrico",
+    "colesterol alto",
+    "angina",
+    "holter 24 horas",
+    "palpitação",
+    "fibrilacao atrial"
+  ],
+  "rows": [
+    {
+      "tipo": "tema",
+      "keyword": "cardiologista",
+      "search_volume": 33100,
+      "latest_volume": 33100,
+      "latest_month": "2026-08",
+      "cpc": 1.08,
+      "competition": "MEDIUM",
+      "growth_6m": 0.0,
+      "growth_12m": -18.3
+    },
+    {
+      "tipo": "direta",
+      "keyword": "o que é cardiologia",
+      "search_volume": 480,
+      "latest_volume": 480,
+      "latest_month": "2026-08",
+      "cpc": null,
+      "competition": "LOW",
+      "growth_6m": 0.0,
+      "growth_12m": 0.0
+    },
+    {
+      "tipo": "direta",
+      "keyword": "o que faz o cardiologista",
+      "search_volume": 1300,
+      "latest_volume": 1000,
+      "latest_month": "2026-08",
+      "cpc": 5.99,
+      "competition": "LOW",
+      "growth_6m": -23.1,
+      "growth_12m": -37.5
+    },
+    {
+      "tipo": "direta",
+      "keyword": "quanto custa consulta cardiologista",
+      "search_volume": 170,
+      "latest_volume": 210,
+      "latest_month": "2026-08",
+      "cpc": 0.48,
+      "competition": "MEDIUM",
+      "growth_6m": 23.5,
+      "growth_12m": 0.0
+    },
+    {
+      "tipo": "direta",
+      "keyword": "marcar consulta cardiologista",
+      "search_volume": 30,
+      "latest_volume": 40,
+      "latest_month": "2026-08",
+      "cpc": 1.47,
+      "competition": "HIGH",
+      "growth_6m": 33.3,
+      "growth_12m": 0.0
+    },
+    {
+      "tipo": "direta",
+      "keyword": "quando procurar um cardiologista",
+      "search_volume": null,
+      "latest_volume": null,
+      "latest_month": "—",
+      "cpc": null,
+      "competition": "—",
+      "growth_6m": null,
+      "growth_12m": null
+    },
+    {
+      "tipo": "direta",
+      "keyword": "cardiologista unimed",
+      "search_volume": 8100,
+      "latest_volume": 8100,
+      "latest_month": "2026-08",
+      "cpc": 0.43,
+      "competition": "LOW",
+      "growth_6m": 22.7,
+      "growth_12m": -18.2
+    },
+    {
+      "tipo": "direta",
+      "keyword": "medico do coracao",
+      "search_volume": 1600,
+      "latest_volume": 1600,
+      "latest_month": "2026-08",
+      "cpc": 1.51,
+      "competition": "LOW",
+      "growth_6m": 0.0,
+      "growth_12m": -15.8
+    },
+    {
+      "tipo": "direta",
+      "keyword": "cardiologista esportivo",
+      "search_volume": 590,
+      "latest_volume": 720,
+      "latest_month": "2026-08",
+      "cpc": 1.31,
+      "competition": "MEDIUM",
+      "growth_6m": 22.0,
+      "growth_12m": 22.0
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "pressao alta",
+      "search_volume": 110000,
+      "latest_volume": 110000,
+      "latest_month": "2026-08",
+      "cpc": 0.4,
+      "competition": "LOW",
+      "growth_6m": 21.5,
+      "growth_12m": -33.3
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "eletrocardiograma",
+      "search_volume": 135000,
+      "latest_volume": 135000,
+      "latest_month": "2026-08",
+      "cpc": 0.61,
+      "competition": "LOW",
+      "growth_6m": 22.7,
+      "growth_12m": 0.0
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "dor no peito",
+      "search_volume": 60500,
+      "latest_volume": 60500,
+      "latest_month": "2026-08",
+      "cpc": 0.21,
+      "competition": "LOW",
+      "growth_6m": 0.0,
+      "growth_12m": -18.2
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "infarto",
+      "search_volume": 60500,
+      "latest_volume": 49500,
+      "latest_month": "2026-08",
+      "cpc": 0.29,
+      "competition": "LOW",
+      "growth_6m": 0.0,
+      "growth_12m": -18.2
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "teste ergometrico",
+      "search_volume": 60500,
+      "latest_volume": 60500,
+      "latest_month": "2026-08",
+      "cpc": 0.78,
+      "competition": "LOW",
+      "growth_6m": 22.2,
+      "growth_12m": 0.0
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "colesterol alto",
+      "search_volume": 49500,
+      "latest_volume": 49500,
+      "latest_month": "2026-08",
+      "cpc": 0.27,
+      "competition": "LOW",
+      "growth_6m": 22.2,
+      "growth_12m": -18.2
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "angina",
+      "search_volume": 33100,
+      "latest_volume": 33100,
+      "latest_month": "2026-08",
+      "cpc": 0.27,
+      "competition": "LOW",
+      "growth_6m": 0.0,
+      "growth_12m": -33.1
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "holter 24 horas",
+      "search_volume": 33100,
+      "latest_volume": 40500,
+      "latest_month": "2026-08",
+      "cpc": 0.82,
+      "competition": "LOW",
+      "growth_6m": 22.4,
+      "growth_12m": 22.4
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "palpitação",
+      "search_volume": 6600,
+      "latest_volume": 5400,
+      "latest_month": "2026-08",
+      "cpc": 0.83,
+      "competition": "LOW",
+      "growth_6m": 0.0,
+      "growth_12m": -18.2
+    },
+    {
+      "tipo": "indireta",
+      "keyword": "fibrilacao atrial",
+      "search_volume": 6600,
+      "latest_volume": 6600,
+      "latest_month": "2026-08",
+      "cpc": 0.09,
+      "competition": "LOW",
+      "growth_6m": 50.0,
+      "growth_12m": 0.0
+    }
+  ]
+}
