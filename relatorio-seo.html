@@ -187,9 +187,9 @@
 
     <div class="buckets">
       <div class="bucket b1"><h3>Top 1 <span class="cnt" id="n1">0</span></h3><ul id="list1"></ul></div>
-      <div class="bucket b5"><h3>Top 5 <span class="cnt" id="n5">0</span></h3><ul id="list5"></ul></div>
-      <div class="bucket b10"><h3>Top 10 <span class="cnt" id="n10">0</span></h3><ul id="list10"></ul></div>
-      <div class="bucket b20"><h3>Top 20 <span class="cnt" id="n20">0</span></h3><ul id="list20"></ul></div>
+      <div class="bucket b5"><h3>2–5 <span class="cnt" id="n5">0</span></h3><ul id="list5"></ul></div>
+      <div class="bucket b10"><h3>6–10 <span class="cnt" id="n10">0</span></h3><ul id="list10"></ul></div>
+      <div class="bucket b20"><h3>11–20 <span class="cnt" id="n20">0</span></h3><ul id="list20"></ul></div>
     </div>
   </section>
 
@@ -1072,15 +1072,18 @@ const LAST_BOOST = { t1: 10, t5: 25, t10: 50, t20: 100, t30: 100 };
 function renderGeral(){
   const rows = filteredGeral();
   const t1  = rows.filter(d=>d.pos===1);
-  const t5  = rows.filter(d=>d.pos>=1 && d.pos<=5);
-  const t10 = rows.filter(d=>d.pos>=1 && d.pos<=10);
-  const t20 = rows.filter(d=>d.pos>=1 && d.pos<=20);
+  const t5c = rows.filter(d=>d.pos>=1 && d.pos<=5);
+  const t10c = rows.filter(d=>d.pos>=1 && d.pos<=10);
+  const t20c = rows.filter(d=>d.pos>=1 && d.pos<=20);
+  const list5 = rows.filter(d=>d.pos>=2 && d.pos<=5);
+  const list10 = rows.filter(d=>d.pos>=6 && d.pos<=10);
+  const list20 = rows.filter(d=>d.pos>=11 && d.pos<=20);
   const ranked = rows.filter(d=>d.pos>=1);
   const allCities = currentCity==="all";
   const n1 = t1.length + (allCities ? LAST_BOOST.t1 : 0);
-  const n5 = t5.length + (allCities ? LAST_BOOST.t5 : 0);
-  const n10 = t10.length + (allCities ? LAST_BOOST.t10 : 0);
-  const n20 = t20.length + (allCities ? LAST_BOOST.t20 : 0);
+  const n5 = t5c.length + (allCities ? LAST_BOOST.t5 : 0);
+  const n10 = t10c.length + (allCities ? LAST_BOOST.t10 : 0);
+  const n20 = t20c.length + (allCities ? LAST_BOOST.t20 : 0);
   const nRanked = allCities ? ranked.length + LAST_BOOST.t30 : ranked.length;
 
   document.getElementById("cKw").textContent  = rows.length;
@@ -1096,11 +1099,11 @@ function renderGeral(){
     el.innerHTML = arr.length ? arr.slice().sort((a,b)=>a.pos-b.pos||a.kw.localeCompare(b.kw,"pt-BR")).map(li).join("")
       : '<div class="empty">Nenhuma palavra-chave nesta faixa</div>';
   };
-  fill("list1", t1);  fill("list5", t5);  fill("list10", t10); fill("list20", t20);
-  document.getElementById("n1").textContent  = n1;
-  document.getElementById("n5").textContent  = n5;
-  document.getElementById("n10").textContent = n10;
-  document.getElementById("n20").textContent = n20;
+  fill("list1", t1);  fill("list5", list5);  fill("list10", list10); fill("list20", list20);
+  document.getElementById("n1").textContent  = t1.length;
+  document.getElementById("n5").textContent  = list5.length;
+  document.getElementById("n10").textContent = list10.length;
+  document.getElementById("n20").textContent = list20.length;
 }
 
 function gainTxt(d){
