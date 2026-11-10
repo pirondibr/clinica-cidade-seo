@@ -138,6 +138,15 @@
   .bl-url:hover{text-decoration:underline}
   @media (max-width:820px){.bl-bar .name{width:120px;font-size:11px;text-align:left}}
   .ia-frame{width:100%;min-height:calc(100vh - 140px);height:3200px;border:0;border-radius:14px;background:#fff;box-shadow:var(--shadow)}
+  .perf-cell{display:flex;align-items:center;gap:10px;justify-content:flex-end;min-width:160px}
+  .perf-cell .pct{font-weight:700;font-variant-numeric:tabular-nums;min-width:48px;text-align:right}
+  .perf-cell .track{flex:1;height:12px;background:var(--panel2);border-radius:999px;overflow:hidden;min-width:70px;max-width:140px}
+  .perf-cell .fill{height:100%;border-radius:999px}
+  .perf-cell .fill.t5{background:linear-gradient(90deg,#65a30d,#16a34a)}
+  .perf-cell .fill.t10{background:linear-gradient(90deg,#d97706,#0ea5e9)}
+  .perf-rank{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--panel2);color:var(--muted);font-size:12px;font-weight:700;margin-right:8px}
+  .perf-rank.best{background:#dcfce7;color:#15803d}
+  .perf-rank.worst{background:#fee2e2;color:#b91c1c}
 </style>
 </head>
 <body>
@@ -152,6 +161,7 @@
   <div class="tabs">
     <div class="tab active" data-tab="geral">Visão Geral</div>
     <div class="tab" data-tab="cidades">Cidades</div>
+    <div class="tab" data-tab="performance">Performance</div>
     <div class="tab" data-tab="tabela">Palavras-chave</div>
     <div class="tab" data-tab="popular">Clínica popular</div>
     <div class="tab" data-tab="exemplos">Exemplos</div>
@@ -197,6 +207,33 @@
     <p class="ex-intro">Evolução do ranking por cidade — séries cumulativas Top 1 / 5 / 10 / 20 / 30 (mesmo critério da Visão Geral).</p>
     <div class="chart-legend" id="cityChartLegend"></div>
     <div id="cityCharts"></div>
+  </section>
+
+  <section id="tab-performance" style="display:none">
+    <p class="ex-intro">% de palavras-chave de cada cidade no <b>Top 5</b> e <b>Top 10</b> (posição atual). Ordenação padrão: melhor Top 5 % no topo.</p>
+    <div class="cards">
+      <div class="card up"><div class="k">Melhor Top 5 %</div><div class="v" id="perfBest">—</div><div class="s" id="perfBestSub">cidade</div></div>
+      <div class="card down"><div class="k">Pior Top 5 %</div><div class="v" id="perfWorst">—</div><div class="s" id="perfWorstSub">cidade</div></div>
+      <div class="card c5"><div class="k">Média Top 5 %</div><div class="v" id="perfAvg5">—</div><div class="s">entre cidades</div></div>
+      <div class="card c10"><div class="k">Média Top 10 %</div><div class="v" id="perfAvg10">—</div><div class="s">entre cidades</div></div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-perfsort="city">Cidade</th>
+            <th data-perfsort="kw" class="num">Palavras</th>
+            <th data-perfsort="t5" class="num">Top 5</th>
+            <th data-perfsort="pct5" class="num">Top 5 %</th>
+            <th data-perfsort="t10" class="num">Top 10</th>
+            <th data-perfsort="pct10" class="num">Top 10 %</th>
+            <th data-perfsort="d5" class="num">Δ Top 5 pp</th>
+            <th data-perfsort="d10" class="num">Δ Top 10 pp</th>
+          </tr>
+        </thead>
+        <tbody id="perfBody"></tbody>
+      </table>
+    </div>
   </section>
 
   <section id="tab-tabela" style="display:none">
@@ -1114,6 +1151,90 @@ function gainTxt(d){
   return {cls:"zero", txt:"—"};
 }
 
+let perfSortKey = "pct5", perfSortDir = -1;
+let CITY_PERF = null;
+
+function buildCityPerf(){
+  const map = {};
+  DATA.forEach(d=>{
+    const city = d.city || "Outras";
+    if(!map[city]) map[city] = {city, kw:0, t5:0, t10:0, prev5:0, prev10:0};
+    const row = map[city];
+    row.kw += 1;
+    if(d.pos>=1 && d.pos<=5) row.t5 += 1;
+    if(d.pos>=1 && d.pos<=10) row.t10 += 1;
+    if(d.prev>=1 && d.prev<=5) row.prev5 += 1;
+    if(d.prev>=1 && d.prev<=10) row.prev10 += 1;
+  });
+  CITY_PERF = Object.values(map).map(r=>{
+    const pct5 = r.kw ? (r.t5 / r.kw * 100) : 0;
+    const pct10 = r.kw ? (r.t10 / r.kw * 100) : 0;
+    const prevPct5 = r.kw ? (r.prev5 / r.kw * 100) : 0;
+    const prevPct10 = r.kw ? (r.prev10 / r.kw * 100) : 0;
+    return {
+      ...r,
+      pct5,
+      pct10,
+      d5: pct5 - prevPct5,
+      d10: pct10 - prevPct10,
+    };
+  });
+  return CITY_PERF;
+}
+
+function fmtPct(n){ return (Math.round(n*10)/10).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1}) + "%"; }
+function fmtPp(n){
+  const v = Math.round(n*10)/10;
+  if(Math.abs(v) < 0.05) return {cls:"zero", txt:"—"};
+  if(v > 0) return {cls:"up", txt:"▲ +" + v.toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})};
+  return {cls:"down", txt:"▼ " + v.toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})};
+}
+function perfBar(pct, kind){
+  const w = Math.max(0, Math.min(100, pct));
+  return `<div class="perf-cell"><span class="pct">${fmtPct(pct)}</span><div class="track"><div class="fill ${kind}" style="width:${w}%"></div></div></div>`;
+}
+
+function renderCityPerf(){
+  if(!CITY_PERF) buildCityPerf();
+  const rows = CITY_PERF.slice().sort((a,b)=>{
+    let va=a[perfSortKey], vb=b[perfSortKey];
+    if(perfSortKey==="city"){ va=a.city; vb=b.city; }
+    if(va<vb) return -1*perfSortDir;
+    if(va>vb) return 1*perfSortDir;
+    return a.city.localeCompare(b.city,"pt-BR");
+  });
+  if(rows.length){
+    const by5 = CITY_PERF.slice().sort((a,b)=>b.pct5-a.pct5 || a.city.localeCompare(b.city,"pt-BR"));
+    const best = by5[0], worst = by5[by5.length-1];
+    const avg5 = CITY_PERF.reduce((s,r)=>s+r.pct5,0)/CITY_PERF.length;
+    const avg10 = CITY_PERF.reduce((s,r)=>s+r.pct10,0)/CITY_PERF.length;
+    document.getElementById("perfBest").textContent = fmtPct(best.pct5);
+    document.getElementById("perfBestSub").textContent = best.city;
+    document.getElementById("perfWorst").textContent = fmtPct(worst.pct5);
+    document.getElementById("perfWorstSub").textContent = worst.city;
+    document.getElementById("perfAvg5").textContent = fmtPct(avg5);
+    document.getElementById("perfAvg10").textContent = fmtPct(avg10);
+  }
+  const bestCity = rows.length ? CITY_PERF.slice().sort((a,b)=>b.pct5-a.pct5)[0].city : "";
+  const worstCity = rows.length ? CITY_PERF.slice().sort((a,b)=>a.pct5-b.pct5)[0].city : "";
+  document.getElementById("perfBody").innerHTML = rows.map((r,i)=>{
+    const d5 = fmtPp(r.d5), d10 = fmtPp(r.d10);
+    let rankCls = "";
+    if(r.city===bestCity) rankCls = "best";
+    else if(r.city===worstCity) rankCls = "worst";
+    return `<tr>
+      <td><span class="perf-rank ${rankCls}">${i+1}</span>${r.city}</td>
+      <td class="num">${r.kw}</td>
+      <td class="num">${r.t5}</td>
+      <td class="num">${perfBar(r.pct5,"t5")}</td>
+      <td class="num">${r.t10}</td>
+      <td class="num">${perfBar(r.pct10,"t10")}</td>
+      <td class="num"><span class="gain ${d5.cls}">${d5.txt}</span></td>
+      <td class="num"><span class="gain ${d10.cls}">${d10.txt}</span></td>
+    </tr>`;
+  }).join("");
+}
+
 function renderTable(){
   const rows = filtered().slice().sort((a,b)=>{
     let va,vb;
@@ -1150,6 +1271,7 @@ document.querySelectorAll(".tab").forEach(t=>{
     const tab=t.dataset.tab;
     document.getElementById("tab-geral").style.display    = tab==="geral"?"block":"none";
     document.getElementById("tab-cidades").style.display  = tab==="cidades"?"block":"none";
+    document.getElementById("tab-performance").style.display = tab==="performance"?"block":"none";
     document.getElementById("tab-tabela").style.display   = tab==="tabela"?"block":"none";
     document.getElementById("tab-exemplos").style.display = tab==="exemplos"?"block":"none";
     document.getElementById("tab-popular").style.display  = tab==="popular"?"block":"none";
@@ -1159,6 +1281,7 @@ document.querySelectorAll(".tab").forEach(t=>{
       buildCityCharts();
       highlightCityBlock();
     }
+    if(tab==="performance") renderCityPerf();
     if(tab==="geral") renderChart();
   });
 });
@@ -1222,9 +1345,19 @@ document.querySelectorAll("th[data-popsort]").forEach(th=>{
   });
 });
 
+document.querySelectorAll("th[data-perfsort]").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const k=th.dataset.perfsort;
+    if(perfSortKey===k) perfSortDir*=-1;
+    else {perfSortKey=k; perfSortDir=(k==="city")?1:-1;}
+    renderCityPerf();
+  });
+});
+
 fillCitySelects();
 buildLegend();
 buildCityLegend();
+buildCityPerf();
 renderAll();
 </script>
 </body>
